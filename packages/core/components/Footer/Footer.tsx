@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Link } from '@nextui-org/react';
+import { config, Link } from '@nextui-org/react';
 
 import { authorName, defaultUrl } from '../../constants';
 
@@ -32,10 +32,13 @@ const StyledFooter = styled.footer`
     bottom: 0;
     width: 100%;
     height: 100px;
-    padding: 0 1.3125rem;
+    padding: 0 0 1.5rem;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: flex-end;
     font-size: 0.75rem;
+
+    @media ${config.media.xsMax} {
+        padding-bottom: 0.5rem;
+    }
 `;

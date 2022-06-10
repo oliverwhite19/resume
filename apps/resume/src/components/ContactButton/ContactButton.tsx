@@ -23,10 +23,15 @@ const Div = styled.div`
     position: fixed;
     bottom: 1.5rem;
     right: 2rem;
+    z-index: 10;
 
-    @media ${config.media.xsMax} {
+    @media ${config.media.xlMax} {
         bottom: 0.5rem;
         right: 0.75rem;
+    }
+
+    > button {
+        border-radius: 2px;
     }
 `;
 

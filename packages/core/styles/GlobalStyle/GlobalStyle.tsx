@@ -9,6 +9,11 @@ const globalStyle = css`
         box-sizing: border-box;
     }
 
+    @font-face {
+        font-family: Frutiger;
+        src: url('Frutiger.ttf') format('truetype');
+    }
+
     html {
         font-size: 16px;
         word-break: keep-all;
