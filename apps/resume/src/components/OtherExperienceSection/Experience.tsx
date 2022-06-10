@@ -6,7 +6,7 @@ import { IExperience } from '../../../_content/Other-Experience';
 import Li from '../Li';
 import TitleTooltip from '../TitleTooltip';
 
-function Experience({ title, position, startDate, endDate, description, which }: IExperience) {
+function Experience({ title, endDate, description, which }: IExperience) {
     const { theme } = useTheme();
 
     return (
