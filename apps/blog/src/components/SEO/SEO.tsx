@@ -5,35 +5,35 @@ import { authorName, defaultMetaBackground } from 'core/constants';
 import { blogDescription, blogName, blogUrl } from '../../../_config';
 
 interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  ogImage?: string | null;
+    title?: string | undefined;
+    description?: string | undefined;
+    ogImage?: string | null;
 }
 
 function SEO({ title, description, ogImage }: Props) {
-  const router = useRouter();
+    const router = useRouter();
 
-  const TITLE = title ? `${title} - ${authorName}` : `${blogName} - ${authorName}`;
-  const DESCRIPTION = description ? description : blogDescription;
-  const URL = blogUrl + router.asPath;
-  const IMAGE = ogImage ? ogImage : defaultMetaBackground.default.src;
+    const TITLE = title ? `${title} - ${authorName}` : `${blogName} - ${authorName}`;
+    const DESCRIPTION = description ? description : blogDescription;
+    const URL = blogUrl + router.asPath;
+    const IMAGE = ogImage ? ogImage : defaultMetaBackground.default.src;
 
-  return (
-    <Head>
-      <title>{TITLE}</title>
-      <link rel="canonical" href={URL} />
-      <meta name="description" content={DESCRIPTION} />
-      <meta property="og:title" content={TITLE} />
-      <meta property="og:description" content={DESCRIPTION} />
-      <meta property="og:image" content={IMAGE} />
-      <meta property="og:url" content={URL} />
+    return (
+        <Head>
+            <title>{TITLE}</title>
+            <link rel="canonical" href={URL} />
+            <meta name="description" content={DESCRIPTION} />
+            <meta property="og:title" content={TITLE} />
+            <meta property="og:description" content={DESCRIPTION} />
+            <meta property="og:image" content={IMAGE} />
+            <meta property="og:url" content={URL} />
 
-      {/* for twitter */}
-      <meta name="twitter:title" content={TITLE} />
-      <meta name="twitter:description" content={DESCRIPTION} />
-      <meta name="twitter:image" content={IMAGE} />
-    </Head>
-  );
+            {/* for twitter */}
+            <meta name="twitter:title" content={TITLE} />
+            <meta name="twitter:description" content={DESCRIPTION} />
+            <meta name="twitter:image" content={IMAGE} />
+        </Head>
+    );
 }
 
 export default SEO;

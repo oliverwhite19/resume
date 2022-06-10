@@ -11,32 +11,32 @@ import ContactButton from '../components/ContactButton';
 import generateKbarAction from '../constants/KbarActions';
 
 const KbarComponent = dynamic(() => import('core/components/Kbar'), {
-  ssr: false,
+    ssr: false,
 });
 
 export default function ResumeApp({ Component, pageProps }: AppProps) {
-  return (
-    <NextThemesProvider
-      defaultTheme="system"
-      attribute="class"
-      value={{ light: lightTheme.className, dark: darkTheme.className }}
-    >
-      <NextUIProvider>
-        <KBarProvider actions={generateKbarAction()}>
-          <Title />
-          <KbarComponent />
-          <ContactButton />
-          <Component {...pageProps} />
-        </KBarProvider>
-      </NextUIProvider>
-    </NextThemesProvider>
-  );
+    return (
+        <NextThemesProvider
+            defaultTheme="system"
+            attribute="class"
+            value={{ light: lightTheme.className, dark: darkTheme.className }}
+        >
+            <NextUIProvider>
+                <KBarProvider actions={generateKbarAction()}>
+                    <Title />
+                    <KbarComponent />
+                    <ContactButton />
+                    <Component {...pageProps} />
+                </KBarProvider>
+            </NextUIProvider>
+        </NextThemesProvider>
+    );
 }
 
 function Title() {
-  return (
-    <Head>
-      <title>{`${authorName} resume`}</title>
-    </Head>
-  );
+    return (
+        <Head>
+            <title>{`${authorName} resume`}</title>
+        </Head>
+    );
 }

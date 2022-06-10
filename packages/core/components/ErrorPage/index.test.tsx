@@ -7,24 +7,24 @@ import { NotFound as DefaultNotFound, Offline as DefaultOffline, ServerError as 
 import { Offline } from './Offline';
 
 describe('core - components - ErrorPage index', () => {
-  it('should render NotFound component', () => {
-    const { container: defaultContainer } = render(<DefaultNotFound />);
-    const { container } = render(<NotFound />);
+    it('should render NotFound component', () => {
+        const { container: defaultContainer } = render(<DefaultNotFound />);
+        const { container } = render(<NotFound />);
 
-    expect(defaultContainer).toEqual(container);
-  });
+        expect(defaultContainer).toEqual(container);
+    });
 
-  it('should render ServerError component', () => {
-    const { container: defaultContainer } = render(<DefaultServerError />);
-    const { container } = render(<ServerError />);
+    it('should render ServerError component', () => {
+        const { container: defaultContainer } = render(<DefaultServerError />);
+        const { container } = render(<ServerError />);
 
-    expect(defaultContainer).toEqual(container);
-  });
+        expect(defaultContainer).toEqual(container);
+    });
 
-  it('should render Offline component', () => {
-    const { container: defaultContainer } = render(<DefaultOffline />);
-    const { container } = render(<Offline />);
+    it('should render Offline component', () => {
+        const { container: defaultContainer } = render(<DefaultOffline />);
+        const { container } = render(<Offline />);
 
-    expect(defaultContainer).toEqual(container);
-  });
+        expect(defaultContainer).toEqual(container);
+    });
 });

@@ -1,7 +1,7 @@
 export {
-  getAllCategories,
-  getAllPosts,
-  getAllPostsByCategory,
-  getPostBySlugAndCategory,
-  getPostsPathByCategory,
+    getAllCategories,
+    getAllPosts,
+    getAllPostsByCategory,
+    getPostBySlugAndCategory,
+    getPostsPathByCategory,
 } from './api';

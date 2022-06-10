@@ -7,138 +7,138 @@ import { useMediaQuery } from 'core';
 import getHeadings, { IHeading } from '../../utils/getHeadings';
 
 function TOC() {
-  const [headings, setHeadings] = useState<IHeading[]>([]);
-  const router = useRouter();
-  const { theme } = useTheme();
+    const [headings, setHeadings] = useState<IHeading[]>([]);
+    const router = useRouter();
+    const { theme } = useTheme();
 
-  useEffect(() => {
-    setHeadings(getHeadings());
-  }, [router]);
+    useEffect(() => {
+        setHeadings(getHeadings());
+    }, [router]);
 
-  const activeId = useScrollSpy({
-    ids: headings.map(heading => heading.id),
-    options: {
-      rootMargin: '0% 0% -80% 0%',
-    },
-  });
+    const activeId = useScrollSpy({
+        ids: headings.map((heading) => heading.id),
+        options: {
+            rootMargin: '0% 0% -80% 0%',
+        },
+    });
 
-  const isSmallToTOC = useMediaQuery(1000);
+    const isSmallToTOC = useMediaQuery(1000);
 
-  if (headings.length <= 0 || isSmallToTOC) return <></>;
+    if (headings.length <= 0 || isSmallToTOC) return <></>;
 
-  return (
-    <Aside>
-      <Div>
-        <h4>Contents</h4>
-        <Ul>
-          {headings.map((heading, index) => (
-            <Li key={index}>
-              <Anchor
-                href={`#${heading.id}`}
-                underline
-                className={heading.id === activeId ? 'active' : ''}
-                theme={theme}
-              >
-                {heading.text}
-              </Anchor>
-            </Li>
-          ))}
-        </Ul>
-      </Div>
-    </Aside>
-  );
+    return (
+        <Aside>
+            <Div>
+                <h4>Contents</h4>
+                <Ul>
+                    {headings.map((heading, index) => (
+                        <Li key={index}>
+                            <Anchor
+                                href={`#${heading.id}`}
+                                underline
+                                className={heading.id === activeId ? 'active' : ''}
+                                theme={theme}
+                            >
+                                {heading.text}
+                            </Anchor>
+                        </Li>
+                    ))}
+                </Ul>
+            </Div>
+        </Aside>
+    );
 }
 
 export default TOC;
 
 interface HookProps {
-  ids: string[];
-  options?: IntersectionObserverInit;
+    ids: string[];
+    options?: IntersectionObserverInit;
 }
 
 function useScrollSpy({ ids, options }: HookProps) {
-  const [activeId, setActiveId] = useState<string | null>();
-  const observer = useRef<IntersectionObserver>();
+    const [activeId, setActiveId] = useState<string | null>();
+    const observer = useRef<IntersectionObserver>();
 
-  useEffect(() => {
-    const elements = ids.map(id => document.getElementById(`${id}`));
+    useEffect(() => {
+        const elements = ids.map((id) => document.getElementById(`${id}`));
 
-    if (observer.current) {
-      observer.current.disconnect();
-    }
-
-    observer.current = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry?.isIntersecting) {
-          setActiveId(entry.target.getAttribute('id'));
+        if (observer.current) {
+            observer.current.disconnect();
         }
-      });
-    }, options);
 
-    elements.forEach(el => el && observer.current?.observe(el));
-    return () => observer.current?.disconnect();
-  }, [ids, options]);
+        observer.current = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry?.isIntersecting) {
+                    setActiveId(entry.target.getAttribute('id'));
+                }
+            });
+        }, options);
 
-  return activeId;
+        elements.forEach((el) => el && observer.current?.observe(el));
+        return () => observer.current?.disconnect();
+    }, [ids, options]);
+
+    return activeId;
 }
 
 const Aside = styled.aside`
-  position: sticky;
-  top: 5rem;
+    position: sticky;
+    top: 5rem;
 `;
 
 const Div = styled.div`
-  position: absolute;
-  padding-top: 0;
-  width: 280px;
+    position: absolute;
+    padding-top: 0;
+    width: 280px;
 
-  overflow: hidden;
-  top: 0;
-  left: calc(100% + 2.25rem);
+    overflow: hidden;
+    top: 0;
+    left: calc(100% + 2.25rem);
 `;
 
 const Ul = styled.ul`
-  width: 100%;
-  margin: 0;
-  padding-left: 1.25rem;
-  max-height: calc(100vh - 10rem);
-  overflow: auto;
+    width: 100%;
+    margin: 0;
+    padding-left: 1.25rem;
+    max-height: calc(100vh - 10rem);
+    overflow: auto;
 
-  &::-webkit-scrollbar {
-    width: 0px;
-  }
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
 `;
 
 const Li = styled.li`
-  width: 100%;
-  list-style-type: none;
+    width: 100%;
+    list-style-type: none;
 `;
 
 const Anchor = styled(Link)<{ theme: NextUITheme | undefined }>`
-  position: relative;
-  color: ${({ theme }) => theme.colors.accents6.value};
-
-  &::before {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    top: 50%;
-    left: 0;
-    transform: translate(-300%, -50%);
-    width: 5px;
-    height: 5px;
-    border-radius: 10px;
-    background-color: ${({ theme }) => theme.colors.primary.value};
-
-    transition: opacity 0.3s;
-    opacity: 0;
-  }
-
-  &.active {
-    color: ${({ theme }) => theme.colors.primary.value};
+    position: relative;
+    color: ${({ theme }) => theme.colors.accents6.value};
 
     &::before {
-      opacity: 1;
+        content: '';
+        position: absolute;
+        display: inline-block;
+        top: 50%;
+        left: 0;
+        transform: translate(-300%, -50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 10px;
+        background-color: ${({ theme }) => theme.colors.primary.value};
+
+        transition: opacity 0.3s;
+        opacity: 0;
     }
-  }
+
+    &.active {
+        color: ${({ theme }) => theme.colors.primary.value};
+
+        &::before {
+            opacity: 1;
+        }
+    }
 `;

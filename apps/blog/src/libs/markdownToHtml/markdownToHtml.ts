@@ -9,15 +9,18 @@ import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
 export default async function markdownToHtml(markdown: string) {
-  const result = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeSlug)
-    .use(rehypeAddClasses, { 'h1,h2': 'heading' })
-    .use(rehypePrism, { ignoreMissing: true })
-    .use(rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferer'] })
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(markdown);
-  return result.toString();
+    const result = await unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remarkRehype, { allowDangerousHtml: true })
+        .use(rehypeSlug)
+        .use(rehypeAddClasses, { 'h1,h2': 'heading' })
+        .use(rehypePrism, { ignoreMissing: true })
+        .use(rehypeExternalLinks, {
+            target: '_blank',
+            rel: ['noopener', 'noreferer'],
+        })
+        .use(rehypeStringify, { allowDangerousHtml: true })
+        .process(markdown);
+    return result.toString();
 }

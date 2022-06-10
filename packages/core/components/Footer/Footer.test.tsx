@@ -5,8 +5,8 @@ import { authorName } from '../../constants';
 import { Footer } from './Footer';
 
 describe('core - Header', () => {
-  it('should', () => {
-    render(<Footer />);
-    expect(screen.getByText(authorName)).toBeInTheDocument();
-  });
+    it('should', () => {
+        render(<Footer />);
+        expect(screen.getByText(authorName)).toBeInTheDocument();
+    });
 });

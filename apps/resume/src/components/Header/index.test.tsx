@@ -8,9 +8,9 @@ const mockHeading = 'heading';
 const mockDescription = 'description';
 
 describe('resume - components - Header index', () => {
-  it('should render same things with Header component', () => {
-    const { container: defaultContainer } = render(<Default heading={mockHeading} description={mockDescription} />);
-    const { container } = render(<Header heading={mockHeading} description={mockDescription} />);
-    expect(defaultContainer).toEqual(container);
-  });
+    it('should render same things with Header component', () => {
+        const { container: defaultContainer } = render(<Default heading={mockHeading} description={mockDescription} />);
+        const { container } = render(<Header heading={mockHeading} description={mockDescription} />);
+        expect(defaultContainer).toEqual(container);
+    });
 });

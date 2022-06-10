@@ -7,25 +7,25 @@ const mockSocialActions = jest.requireMock('core/constants');
 jest.mock('core/constants');
 
 describe('resume - constants - KbarActions', () => {
-  beforeEach(() => {
-    jest.resetModules();
-  });
+    beforeEach(() => {
+        jest.resetModules();
+    });
 
-  it('should return blog url and email', () => {
-    mockConfig.blogUrl = 'mock blogurl';
-    mockConfig.email = 'mock email';
-    mockSocialActions.socialActions = [];
+    it('should return blog url and email', () => {
+        mockConfig.blogUrl = 'mock blogurl';
+        mockConfig.email = 'mock email';
+        mockSocialActions.socialActions = [];
 
-    const kbarActions = generateKbarActions();
-    expect(kbarActions.length).toBe(2);
-  });
+        const kbarActions = generateKbarActions();
+        expect(kbarActions.length).toBe(2);
+    });
 
-  it('should not return blog url and email when null and empty string', () => {
-    mockConfig.blogUrl = '';
-    mockConfig.email = null;
-    mockSocialActions.socialActions = [];
+    it('should not return blog url and email when null and empty string', () => {
+        mockConfig.blogUrl = '';
+        mockConfig.email = null;
+        mockSocialActions.socialActions = [];
 
-    const kbarActions = generateKbarActions();
-    expect(kbarActions.length).toBe(0);
-  });
+        const kbarActions = generateKbarActions();
+        expect(kbarActions.length).toBe(0);
+    });
 });

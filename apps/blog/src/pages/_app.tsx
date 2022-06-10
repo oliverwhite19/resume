@@ -9,42 +9,42 @@ import { KBarProvider, useRegisterActions } from 'kbar';
 import generateKbarAction from '../libs/kbarActions';
 
 const KbarComponent = dynamic(() => import('core/components/Kbar'), {
-  ssr: false,
+    ssr: false,
 });
 
 export default function BlogApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  const kbarActions = generateKbarAction(router);
+    const router = useRouter();
+    const kbarActions = generateKbarAction(router);
 
-  return (
-    <NextThemesProvider
-      defaultTheme="system"
-      attribute="class"
-      value={{ light: lightTheme.className, dark: darkTheme.className }}
-    >
-      <NextUIProvider>
-        <KBarProvider actions={kbarActions}>
-          <HandleActionWithRoute />
-          <KbarComponent />
-          <Component {...pageProps} />
-        </KBarProvider>
-      </NextUIProvider>
-    </NextThemesProvider>
-  );
+    return (
+        <NextThemesProvider
+            defaultTheme="system"
+            attribute="class"
+            value={{ light: lightTheme.className, dark: darkTheme.className }}
+        >
+            <NextUIProvider>
+                <KBarProvider actions={kbarActions}>
+                    <HandleActionWithRoute />
+                    <KbarComponent />
+                    <Component {...pageProps} />
+                </KBarProvider>
+            </NextUIProvider>
+        </NextThemesProvider>
+    );
 }
 
 function HandleActionWithRoute() {
-  const router = useRouter();
+    const router = useRouter();
 
-  const homeAction = {
-    id: 'home',
-    name: 'Home',
-    section: 'Scope',
-    perform: () => {
-      router.push('/');
-    },
-  };
+    const homeAction = {
+        id: 'home',
+        name: 'Home',
+        section: 'Scope',
+        perform: () => {
+            router.push('/');
+        },
+    };
 
-  useRegisterActions(router.pathname !== '/' ? [homeAction] : [], [router.pathname]);
-  return <></>;
+    useRegisterActions(router.pathname !== '/' ? [homeAction] : [], [router.pathname]);
+    return <></>;
 }

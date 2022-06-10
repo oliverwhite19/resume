@@ -3,13 +3,13 @@ import { darkCode, darkCodeLight, darkPrimary, darkSelection } from '../../const
 import { getColor } from './getColor';
 
 export const darkTheme = createTheme({
-  type: 'dark',
-  theme: {
-    colors: {
-      primary: getColor(darkPrimary, theme.colors.primary.value),
-      selection: getColor(darkSelection, theme.colors.selection.value),
-      code: getColor(darkCode, theme.colors.code.value),
-      codeLight: getColor(darkCodeLight, theme.colors.codeLight.value),
+    type: 'dark',
+    theme: {
+        colors: {
+            primary: getColor(darkPrimary, theme.colors.primary.value),
+            selection: getColor(darkSelection, theme.colors.selection.value),
+            code: getColor(darkCode, theme.colors.code.value),
+            codeLight: getColor(darkCodeLight, theme.colors.codeLight.value),
+        },
     },
-  },
 });
