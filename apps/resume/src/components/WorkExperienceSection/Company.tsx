@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { config, NextUITheme, useTheme } from '@nextui-org/react';
+import { NextUITheme, useTheme } from '@nextui-org/react';
 
 import { ICompany } from '../../../_content/Work-Experience';
 
@@ -11,7 +11,7 @@ function Company({ name, description, link }: Omit<ICompany, 'projects'>) {
         <CompanyCard data-testid="wrapper">
             <h3>
                 {link ? (
-                    <a target="_blank" href={link}>
+                    <a rel="noreferrer" target="_blank" href={link}>
                         {name}
                     </a>
                 ) : (

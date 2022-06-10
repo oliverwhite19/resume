@@ -6,7 +6,7 @@ import { IProject } from '../../../_content/Work-Experience';
 import Li from '../Li';
 import TitleTooltip from '../TitleTooltip';
 
-function Project({ title, description, startDate, endDate, which, techStack }: IProject) {
+function Project({ title, startDate, endDate, which, techStack }: IProject) {
     const { theme } = useTheme();
 
     return (
