@@ -26,7 +26,6 @@ export function ThemeSwitch() {
                 '& span': { backgroundColor: '$white' },
                 '& div': { height: '32px' },
             }}
-            shadow
             squared
             size="lg"
             checked={isDark}

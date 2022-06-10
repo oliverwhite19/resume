@@ -27,18 +27,12 @@ function Header({ heading, description }: IHeader) {
             </HeadingWrapper>
             <ButtonWrapper>
                 <a href="/files/OliverWhiteResume.pdf" target="_blank" rel="noopener noreferrer">
-                    <Button shadow auto size={isSmallButtonSize ? 'md' : 'lg'}>
+                    <Button auto size={isSmallButtonSize ? 'md' : 'lg'}>
                         Download PDF Resume
                     </Button>
                 </a>
 
-                <Button
-                    shadow
-                    color="primary"
-                    auto
-                    onClick={() => query.toggle()}
-                    size={isSmallButtonSize ? 'md' : 'lg'}
-                >
+                <Button auto onClick={() => query.toggle()} size={isSmallButtonSize ? 'md' : 'lg'}>
                     Contact
                 </Button>
             </ButtonWrapper>

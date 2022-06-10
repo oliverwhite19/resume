@@ -13,10 +13,6 @@ export const lightTheme = createTheme({
             primaryShadow: getColor(lightPrimary, theme.colors.primary.value),
             primaryDark: getColor(lightPrimaryDark, theme.colors.primary.value),
             link: getColor(lightPrimary, theme.colors.primary.value),
-            background: 'orange',
-        },
-        fonts: {
-            sans: 'Frutiger;',
         },
     },
 });

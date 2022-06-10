@@ -14,8 +14,5 @@ export const darkTheme = createTheme({
             primaryDark: getColor(darkPrimaryDark, theme.colors.primary.value),
             link: getColor(darkPrimary, theme.colors.primary.value),
         },
-        fonts: {
-            sans: 'Frutiger;',
-        },
     },
 });
