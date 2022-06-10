@@ -21,7 +21,7 @@
                         "Collaborated with third party vendors to allow real time data synchronization and reporting between systems, leading to increased client revenue and unlocking sales to many potential clients and scaling our client base by over 200%.",
                         "Built a real time data driven analytics system and data aggregation tools using GraphQL and NextJS with end-to-end typing."
                     ],
-                    "techStack": ["TypeScript", "React", "Express", "GraphQL"]
+                    "techStack": ["TypeScript", "React", "Express", "GraphQL", "PostgreSQL", "NestJS"]
                 }
             ]
         },
@@ -32,19 +32,18 @@
             "projects": [
                 {
                     "title": {
-                        "text": "Bar Pay",
+                        "text": "Full Stack Web Developer",
                         "githubLink": null,
                         "otherLink": null
                     },
-                    "role": "FE Dev Leader",
-                    "description": "Leading FE developers",
-                    "startDate": "2020.08",
-                    "endDate": "2021.03",
+                    "startDate": "February 2017",
+                    "endDate": "December 2018",
                     "which": [
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-                        "Cum iusto quasi alias provident quos perspiciatis modi dolores libero tenetur nam?"
+                        "Designed and built a mobile form designer for aggregating data on the safety of critical energy infrastructure, resulting in greatly improved on-site efficiency for the client.",
+                        "Built a native android application to scan, verify and gather data from thousands of different identity documents that is used by a major automobile rental agency.",
+                        "Designed and built a task tracker for one of the largest airport service providers that is used across the US in multiple major airline hubs."
                     ],
-                    "techStack": ["TypeScript", "React", "Recoil"]
+                    "techStack": ["JavaScript", "Laravel", "PHP", "MySQL", "Angular", "Ionic", "Android", "Java"]
                 }
             ]
         }

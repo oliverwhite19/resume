@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Avatar, Text, useTheme } from '@nextui-org/react';
-import { ThemeSwitch } from 'core';
+import { Avatar, Button, Text, useTheme } from '@nextui-org/react';
+import { ThemeSwitch, useMediaQuery } from 'core';
 import { authorImage, authorName } from 'core/constants';
-
 import { IHeader } from '../../../_content/Header';
+import { useKBar } from 'kbar';
 
 function Header({ heading, description }: IHeader) {
     const { theme } = useTheme();
+    const { query } = useKBar();
+    const isSmallButtonSize = useMediaQuery(650);
 
     return (
         <header>
@@ -23,7 +25,23 @@ function Header({ heading, description }: IHeader) {
 
                 <ThemeSwitch />
             </HeadingWrapper>
+            <ButtonWrapper>
+                <a href="/files/OliverWhiteResume.pdf" target="_blank" rel="noopener noreferrer">
+                    <Button shadow auto size={isSmallButtonSize ? 'md' : 'lg'}>
+                        Download PDF Resume
+                    </Button>
+                </a>
 
+                <Button
+                    shadow
+                    color="primary"
+                    auto
+                    onClick={() => query.toggle()}
+                    size={isSmallButtonSize ? 'md' : 'lg'}
+                >
+                    Contact
+                </Button>
+            </ButtonWrapper>
             <DescriptionWrapper>
                 <Avatar src={authorImage.default.src} alt={authorName} text={authorName} size="xl" />
                 <P dangerouslySetInnerHTML={{ __html: description }}></P>
@@ -33,6 +51,16 @@ function Header({ heading, description }: IHeader) {
 }
 
 export default Header;
+
+const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    > button,
+    > a > button {
+        border-radius: 2px;
+    }
+`;
 
 const HeadingWrapper = styled.div`
     display: flex;
@@ -48,6 +76,7 @@ const H1 = styled(Text)`
     font-size: 3rem;
     line-height: 3rem;
     margin-bottom: 8px;
+    padding-right: 1rem;
 `;
 
 const DescriptionWrapper = styled.div`

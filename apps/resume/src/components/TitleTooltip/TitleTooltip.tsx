@@ -11,7 +11,12 @@ interface Props {
 
 function TitleTooltip({ text, githubLink, otherLink }: Props) {
     return githubLink !== null || otherLink !== null ? (
-        <Tooltip placement="topStart" content={<TooltipContent githubLink={githubLink} otherLink={otherLink} />}>
+        <Tooltip
+            placement="top"
+            content={<TooltipContent githubLink={githubLink} otherLink={otherLink} />}
+            hideArrow={false}
+            color={'invert'}
+        >
             <StyledButton auto light color="primary" animated={false}>
                 <h3>{text}</h3>
             </StyledButton>
@@ -29,11 +34,11 @@ const StyledButton = styled(Button)`
 `;
 
 interface TooltipProps {
-    githubLink: string | null;
+    githubLink?: string | null;
     otherLink: string | null;
 }
 
-function TooltipContent({ githubLink, otherLink }: TooltipProps) {
+export function TooltipContent({ githubLink, otherLink }: TooltipProps) {
     const { theme } = useTheme();
 
     return (

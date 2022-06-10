@@ -12,10 +12,7 @@ function Experience({ title, position, startDate, endDate, description, which }:
     return (
         <Div>
             <TitleTooltip {...title} />
-            <small>
-                {startDate} ~ {endDate}
-            </small>
-            <span>{position}</span>
+            <small>{endDate}</small>
             <p>{description}</p>
             {which.length > 0 && (
                 <ul>
@@ -36,4 +33,12 @@ const Div = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
+    > div:first-of-type {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+
+    text-align: center;
 `;
