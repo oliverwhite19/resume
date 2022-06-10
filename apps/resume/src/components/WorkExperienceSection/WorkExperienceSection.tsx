@@ -15,10 +15,7 @@ function WorkExperienceSection({ title, list }: IWorkExperience) {
             <h2>{title}</h2>
             {list.map((company, index) => (
                 <CompanyWrapper key={index}>
-                    <div>
-                        <Company {...company} />
-                    </div>
-
+                    <Company {...company} />
                     <ProjectWrapper theme={theme}>
                         {company.projects.map((project, index) => (
                             <Project key={index} {...project} />
@@ -33,7 +30,6 @@ function WorkExperienceSection({ title, list }: IWorkExperience) {
 export default WorkExperienceSection;
 
 const CompanyWrapper = styled.div`
-    display: flex;
     margin-bottom: 2rem;
 
     & > div:first-of-type {

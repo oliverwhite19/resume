@@ -3,9 +3,8 @@
     "list": [
         {
             "name": "Welbi Technologies Inc.",
-            "startDate": "2019.01",
-            "endDate": "Present",
             "description": "Help senior living communities deliver exceptional and unique life experiences with our state-of-the-art recreational platform.",
+            "link": "https://www.welbi.co/",
             "projects": [
                 {
                     "title": {
@@ -13,18 +12,23 @@
                         "githubLink": null,
                         "otherLink": null
                     },
+                    "startDate": "January 2019",
+                    "endDate": "Present",
                     "description": "Building a unique Recreation platform to help senior living and long term care facilities",
-                    "which": ["leading fe developers", "foster SEO"],
+                    "which": [
+                        "Designed and implemented a typescript RESTful API using TypeScript and Express to provide support for recreation and administration staff in retirement communities across the country.",
+                        "Lead the design and implementation of core systems, everything from authentication to customizable surveys and everything in between.",
+                        "Collaborated with third party vendors to allow real time data synchronization and reporting between systems, leading to increased client revenue and unlocking sales to many potential clients and scaling our client base by over 200%.",
+                        "Built a real time data driven analytics system and data aggregation tools using GraphQL and NextJS with end-to-end typing."
+                    ],
                     "techStack": ["TypeScript", "React", "Express", "GraphQL"]
                 }
             ]
         },
         {
-            "name": "Bar company",
-            "position": "Web Developer",
-            "startDate": "2020.03",
-            "endDate": "2021.03",
-            "description": "Bar company is very awesome",
+            "name": "Louisville Geek LLC",
+            "description": "Louisville Geek, LLC. is a privately-owned Information Technology company based out of Louisville, KY. Founded in 2004, we provide comprehensive managed IT services for a diverse range of businesses and non-profit organizations throughout the country.",
+            "link": "https://louisvillegeek.com/it-services/web-software-development/",
             "projects": [
                 {
                     "title": {

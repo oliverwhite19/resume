@@ -13,9 +13,8 @@ function Project({ title, description, startDate, endDate, which, techStack }: I
         <Div>
             <TitleTooltip {...title} />
             <small>
-                {startDate} ~ {endDate}
+                {startDate} - {endDate}
             </small>
-            <span>{description}</span>
             {which.length > 0 && (
                 <ul data-testid="which wrapper">
                     {which.map((each, index) => (
@@ -51,6 +50,7 @@ const TechDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: center;
 `;
 
 const TechSpan = styled.span<{ theme: NextUITheme | undefined }>`

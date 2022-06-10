@@ -20,6 +20,7 @@ export interface ICompany {
     endDate: string;
     description: string;
     projects: IProject[];
+    link: string;
 }
 
 export interface IWorkExperience {
