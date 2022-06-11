@@ -13,6 +13,7 @@ export const darkTheme: any = createTheme({
             primaryShadow: getColor(darkPrimary, theme.colors.primary.value),
             primaryDark: getColor(darkPrimaryDark, theme.colors.primary.value),
             link: getColor(darkPrimary, theme.colors.primary.value),
+            primarySolidHover: getColor(darkPrimaryDark, theme.colors.primary.value),
         },
     },
 });

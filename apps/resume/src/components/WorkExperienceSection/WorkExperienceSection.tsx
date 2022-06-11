@@ -3,7 +3,7 @@ import { IWorkExperience } from '../../../_content/Work-Experience';
 import Section from '../Section';
 import Project from './Project';
 import TitleTooltip from '../TitleTooltip';
-import { styled } from '@stitches/react';
+import { styled } from '@nextui-org/react';
 
 const CompanyCard = styled('div', {
     textAlign: 'center',
@@ -20,7 +20,7 @@ const CompanyWrapper = styled('div', {
     '& > div:first-of-type': {
         height: 'auto',
     },
-    '@media (max-width: 650px)': {
+    '@smMax': {
         flexDirection: 'column',
     },
 });
@@ -30,14 +30,14 @@ const ProjectWrapper = styled('div', {
     flexDirection: 'column',
     flexGrow: 1,
     gap: '12px',
-    '@media (max-width: 650px)': {
+    '@smMax': {
         paddingLeft: '1rem',
-        borderLeft: 'solid 3px var(--nextui-colors-primary)',
+        borderLeft: 'solid 3px  $primary',
     },
 });
 
 const P = styled('p', {
-    color: 'var(--nextui-colors-accents6)',
+    color: '$accents6',
 });
 
 function WorkExperienceSection({ title, list }: IWorkExperience) {

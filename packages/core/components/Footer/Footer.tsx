@@ -1,8 +1,22 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { config, Link } from '@nextui-org/react';
-
+import { Link, styled } from '@nextui-org/react';
 import { authorName, defaultUrl } from '../../constants';
+
+const StyledFooter = styled('footer', {
+    position: 'absolute',
+    left: 0,
+    bottomm: 0,
+    width: '100%',
+    height: '100px',
+    padding: '0 0 1.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    fontSize: '0.75rem',
+    '@xsMax': {
+        paddingBottom: '0.5rem',
+    },
+});
 
 export function Footer() {
     const date = new Date();
@@ -14,7 +28,7 @@ export function Footer() {
                 <Link href={defaultUrl} target="_blank">
                     {authorName}
                 </Link>{' '}
-                All rights reserved.
+                All rights reserved.{' '}
             </span>
             <span>
                 Powered By{' '}
@@ -25,20 +39,3 @@ export function Footer() {
         </StyledFooter>
     );
 }
-
-const StyledFooter = styled.footer`
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    padding: 0 0 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-size: 0.75rem;
-
-    @media ${config.media.xsMax} {
-        padding-bottom: 0.5rem;
-    }
-`;

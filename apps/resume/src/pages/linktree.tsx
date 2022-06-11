@@ -1,7 +1,6 @@
 import Header from '../components/Header';
 import { data as headerData } from '../../_content/Header';
-import { Button } from '@nextui-org/react';
-import { styled } from '@stitches/react';
+import { Button, styled } from '@nextui-org/react';
 import { SocialIcon } from 'react-social-icons';
 
 const LinkWrapper = styled('div', {

@@ -1,8 +1,10 @@
-import styled from '@emotion/styled';
+import { styled } from '@nextui-org/react';
 
-export default styled.section`
-    margin-top: 3rem;
-    & > div:first-of-type {
-        margin-top: 2rem;
-    }
-`;
+const section: any = styled('section', {
+    marginTop: '3rem',
+    '& > div:first-of-type': {
+        marginTop: '2rem',
+    },
+});
+
+export default section;

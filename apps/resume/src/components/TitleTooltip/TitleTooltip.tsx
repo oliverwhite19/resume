@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Tooltip, useTheme } from '@nextui-org/react';
+import { Button, Tooltip, useTheme, styled } from '@nextui-org/react';
 import { Icon } from 'core';
-import { styled } from '@stitches/react';
 
 interface Props {
     text: string;
@@ -9,7 +8,7 @@ interface Props {
     otherLink?: string;
 }
 const H2 = styled('h2', {
-    color: ' var(--nextui-colors-primary)',
+    color: '$primary',
     cursor: 'pointer',
     margin: 0,
 });

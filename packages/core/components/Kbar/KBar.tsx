@@ -1,12 +1,10 @@
-import styled from '@emotion/styled';
-import { Backdrop, NextUITheme, useTheme } from '@nextui-org/react';
+import { Backdrop, styled } from '@nextui-org/react';
 import { KBarAnimator, KBarPortal, KBarPositioner, useKBar, VisualState } from 'kbar';
 
 import { KBarResult } from './Result';
 import KBarSearch from './Search';
 
 function Kbar() {
-    const { theme } = useTheme();
     const { visible } = useKBar((state) => ({
         visible: state.visualState !== VisualState.hidden,
     }));
@@ -15,7 +13,7 @@ function Kbar() {
         <KBarPortal>
             <Backdrop blur className="backdrop" visible={visible}>
                 <KBarPositioner>
-                    <StyledKBarAnimator theme={theme}>
+                    <StyledKBarAnimator>
                         <KBarSearch />
                         <KBarResult />
                     </StyledKBarAnimator>
@@ -27,14 +25,12 @@ function Kbar() {
 
 export default Kbar;
 
-const StyledKBarAnimator = styled(KBarAnimator)<{
-    theme: NextUITheme | undefined;
-}>`
-    max-width: 500px;
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.accents1.value};
-    color: ${({ theme }) => theme.colors.text.value};
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: ${({ theme }) => theme.shadows.md.value};
-`;
+const StyledKBarAnimator = styled(KBarAnimator, {
+    maxWidth: '500px',
+    width: '100%',
+    backgroundColor: '$accents1',
+    color: '$text',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    boxShadow: '$md',
+});

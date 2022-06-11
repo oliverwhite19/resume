@@ -1,14 +1,10 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { useTheme } from '@nextui-org/react';
-
+import { styled } from '@nextui-org/react';
 import { IExperience } from '../../../_content/Other-Experience';
 import Li from '../Li';
 import TitleTooltip from '../TitleTooltip';
 
 function Experience({ title, endDate, description, which }: IExperience) {
-    const { theme } = useTheme();
-
     return (
         <Div>
             <TitleTooltip {...title} />
@@ -17,9 +13,7 @@ function Experience({ title, endDate, description, which }: IExperience) {
             {which.length > 0 && (
                 <ul>
                     {which.map((each, index) => (
-                        <Li key={index} theme={theme}>
-                            {each}
-                        </Li>
+                        <Li key={index}>{each}</Li>
                     ))}
                 </ul>
             )}
@@ -29,16 +23,15 @@ function Experience({ title, endDate, description, which }: IExperience) {
 
 export default Experience;
 
-const Div = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-    > div:first-of-type {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-    }
-
-    text-align: center;
-`;
+const Div = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '2rem',
+    '> div:first-of-type': {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%',
+    },
+    textAlign: 'center',
+});

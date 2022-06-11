@@ -1,14 +1,11 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { NextUITheme, useTheme } from '@nextui-org/react';
+import { styled } from '@nextui-org/react';
 
 import { IProject } from '../../../_content/Work-Experience';
 import Li from '../Li';
 import TitleTooltip from '../TitleTooltip';
 
 function Project({ title, startDate, endDate, which, techStack }: IProject) {
-    const { theme } = useTheme();
-
     return (
         <Div>
             <TitleTooltip {...title} />
@@ -18,9 +15,7 @@ function Project({ title, startDate, endDate, which, techStack }: IProject) {
             {which.length > 0 && (
                 <ul data-testid="which wrapper">
                     {which.map((each, index) => (
-                        <Li key={index} theme={theme}>
-                            {each}
-                        </Li>
+                        <Li key={index}>{each}</Li>
                     ))}
                 </ul>
             )}
@@ -28,9 +23,7 @@ function Project({ title, startDate, endDate, which, techStack }: IProject) {
             {techStack && techStack.length > 0 && (
                 <TechDiv data-testid="tech stack wrapper">
                     {techStack.map((tech, index) => (
-                        <TechSpan key={index} theme={theme}>
-                            {tech}
-                        </TechSpan>
+                        <TechSpan key={index}>{tech}</TechSpan>
                     ))}
                 </TechDiv>
             )}
@@ -40,22 +33,22 @@ function Project({ title, startDate, endDate, which, techStack }: IProject) {
 
 export default Project;
 
-const Div = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.25rem;
-`;
+const Div = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '1.25rem',
+});
 
-const TechDiv = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-`;
+const TechDiv = styled('div', {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '0.5rem',
+    justifyContent: 'center',
+});
 
-const TechSpan = styled.span<{ theme: NextUITheme | undefined }>`
-    padding: 0.125rem 0.5rem;
-    background-color: ${({ theme }) => theme.colors.accents1.value};
-    border-radius: 32px;
-    font-size: 0.75rem;
-`;
+const TechSpan = styled('span', {
+    padding: '0.125rem 0.5rem',
+    backgroundColor: '$accents1',
+    borderRadius: '32px',
+    fontSize: '0.75rem',
+});
