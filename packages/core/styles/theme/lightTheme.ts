@@ -2,7 +2,7 @@ import { createTheme, theme } from '@nextui-org/react';
 import { lightCode, lightCodeLight, lightPrimary, lightPrimaryDark, lightSelection } from '../../constants';
 import { getColor } from './getColor';
 
-export const lightTheme = createTheme({
+export const lightTheme: any = createTheme({
     type: 'light',
     theme: {
         colors: {
