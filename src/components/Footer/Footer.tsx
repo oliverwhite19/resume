@@ -28,13 +28,7 @@ export function Footer() {
                 <Link href={defaultUrl} target="_blank">
                     {authorName}
                 </Link>{' '}
-                All rights reserved.{' '}
-            </span>
-            <span>
-                Powered By{' '}
-                <Link href="https://github.com/hyesungoh/comet-land" target="_blank">
-                    @Comet-land
-                </Link>
+                All rights reserved.
             </span>
         </StyledFooter>
     );

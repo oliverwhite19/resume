@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Button, useTheme, styled } from '@nextui-org/react';
+import { Avatar as NextAvatar, Button, useTheme, styled } from '@nextui-org/react';
 import { IHeader } from '../../../_content/Header';
 import { useKBar } from 'kbar';
 import { ThemeSwitch } from '../ThemeSwitch';
@@ -12,6 +12,12 @@ const ButtonWrapper = styled('div', {
     gap: '1rem',
     ['> button, > a > button']: {
         borderRadius: '2px',
+    },
+});
+
+const Avatar = styled(NextAvatar, {
+    '&>img': {
+        background: '$primary !important',
     },
 });
 
