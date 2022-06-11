@@ -15,5 +15,8 @@ export const darkTheme: any = createTheme({
             link: getColor(darkPrimary, theme.colors.primary.value),
             primarySolidHover: getColor(darkPrimaryDark, theme.colors.primary.value),
         },
+        fonts: {
+            sans: "'Johnston Sans', 'Univers'",
+        },
     },
 });

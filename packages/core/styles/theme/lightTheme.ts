@@ -15,5 +15,8 @@ export const lightTheme: any = createTheme({
             link: getColor(lightPrimary, theme.colors.primary.value),
             primarySolidHover: getColor(lightPrimaryDark, theme.colors.primary.value),
         },
+        fonts: {
+            sans: "'Johnston Sans', 'Univers'",
+        },
     },
 });
