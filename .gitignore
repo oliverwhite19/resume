@@ -7,7 +7,7 @@
 /coverage
 
 # next.js
-/.next/
+.next
 /out/
 
 # production
@@ -30,4 +30,5 @@ yarn-error.log*
 
 # vercel
 .vercel
+
 .turbo/turbo-build.log
