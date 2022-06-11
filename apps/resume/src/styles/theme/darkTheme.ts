@@ -1,5 +1,5 @@
 import { createTheme, theme } from '@nextui-org/react';
-import { darkCode, darkCodeLight, darkPrimary, darkPrimaryDark, darkSelection } from '../../constants';
+import { darkCode, darkCodeLight, darkPrimary, darkPrimaryDark, darkSelection } from '../../constants/Colors';
 import { getColor } from './getColor';
 
 export const darkTheme: any = createTheme({

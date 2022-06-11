@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Tooltip, useTheme, styled } from '@nextui-org/react';
-import { Icon } from 'core';
+import { Icon } from '../Icon';
 
 interface Props {
     text: string;

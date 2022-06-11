@@ -1,5 +1,5 @@
 import { createTheme, theme } from '@nextui-org/react';
-import { lightCode, lightCodeLight, lightPrimary, lightPrimaryDark, lightSelection } from '../../constants';
+import { lightCode, lightCodeLight, lightPrimary, lightPrimaryDark, lightSelection } from '../../constants/Colors';
 import { getColor } from './getColor';
 
 export const lightTheme: any = createTheme({

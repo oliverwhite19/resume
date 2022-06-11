@@ -3,12 +3,12 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { NextUIProvider } from '@nextui-org/react';
-import { darkTheme, lightTheme } from 'core';
-import { authorName } from 'core/constants';
 import { KBarProvider } from 'kbar';
 import generateKbarAction from '../constants/KbarActions';
+import { authorName } from '../constants/General';
+import { darkTheme, lightTheme } from '../styles';
 
-const KbarComponent = dynamic(() => import('core/components/Kbar'), {
+const KbarComponent = dynamic(() => import('../components/Kbar'), {
     ssr: false,
 });
 

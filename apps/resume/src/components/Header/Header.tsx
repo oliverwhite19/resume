@@ -1,9 +1,10 @@
 import React from 'react';
 import { Avatar, Button, useTheme, styled } from '@nextui-org/react';
-import { ThemeSwitch, useMediaQuery } from 'core';
-import { authorImage, authorName } from 'core/constants';
 import { IHeader } from '../../../_content/Header';
 import { useKBar } from 'kbar';
+import { ThemeSwitch } from '../ThemeSwitch';
+import { useMediaQuery } from '../../hooks';
+import { authorImage, authorName } from '../../constants/General';
 
 const ButtonWrapper = styled('div', {
     display: 'flex',

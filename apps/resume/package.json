@@ -13,7 +13,6 @@
     },
     "dependencies": {
         "@nextui-org/react": "^1.0.0-beta.9",
-        "core": "*",
         "kbar": "^0.1.0-beta.33",
         "next": "^12.1.0",
         "next-themes": "^0.1.1",

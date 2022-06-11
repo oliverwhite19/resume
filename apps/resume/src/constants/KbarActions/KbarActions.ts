@@ -1,7 +1,8 @@
-import { IconActionType, socialActions } from 'core/constants';
-import { openExternalLink } from 'core/utils';
+import { openExternalLink } from '../../utils';
 
 import { email } from '../../../_config';
+import { socialActions } from './socialMedia';
+import { IconActionType } from './type';
 
 function generateKbarAction() {
     const KbarActions: IconActionType[] = [...socialActions];
