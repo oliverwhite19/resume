@@ -6,7 +6,7 @@ import { authorImage, authorName, favicon } from 'core/constants';
 import { resumeUrl } from '../../_config';
 import { data } from '../../_content/Header';
 
-const TITLE = `${authorName} resume`;
+const TITLE = `${authorName}`;
 export default class ResumeDocument extends Document {
     render() {
         return (

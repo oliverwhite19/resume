@@ -31,21 +31,17 @@ const Linktree = ({ header }) => {
             <Header isLinktree {...header} />
             <LinkWrapper>
                 <a href="/" target="_blank" rel="noopener noreferrer">
-                    <Button>Website</Button>
+                    <Button>Resume</Button>
                 </a>
                 <a href="https://twitter.com/olw_gg" target="_blank" rel="noopener noreferrer">
                     <Button>Twitter</Button>
                 </a>
             </LinkWrapper>
             <SocialWrapper>
-                <SocialIcon url="https://twitter.com/olw_gg" bgColor="#e53020" network="twitter" />
-                <SocialIcon url="https://github.com/oliverwhite19" bgColor="#e53020" network="github" />
-                <SocialIcon
-                    url="https://www.linkedin.com/in/oliver-white-453a1221a/"
-                    bgColor="#e53020"
-                    network="linkedin"
-                />
-                <SocialIcon url="mailto:oliverwhite93@gmail.com" bgColor="#e53020" network="email" />
+                <SocialIcon url="https://twitter.com/olw_gg" network="twitter" />
+                <SocialIcon url="https://github.com/oliverwhite19" network="github" />
+                <SocialIcon url="https://www.linkedin.com/in/oliver-white-453a1221a/" network="linkedin" />
+                <SocialIcon url="mailto:oliverwhite93@gmail.com" network="email" />
             </SocialWrapper>
         </>
     );
