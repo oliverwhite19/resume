@@ -6,7 +6,7 @@ import { authorImage, authorName } from 'core/constants';
 import { IHeader } from '../../../_content/Header';
 import { useKBar } from 'kbar';
 
-function Header({ heading, description }: IHeader) {
+function Header({ heading, description, isLinktree }: IHeader) {
     const { theme } = useTheme();
     const { query } = useKBar();
     const isSmallButtonSize = useMediaQuery(650);
@@ -25,21 +25,27 @@ function Header({ heading, description }: IHeader) {
 
                 <ThemeSwitch />
             </HeadingWrapper>
-            <ButtonWrapper>
-                <a href="/files/OliverWhiteResume.pdf" target="_blank" rel="noopener noreferrer">
-                    <Button auto size={isSmallButtonSize ? 'md' : 'lg'}>
-                        Download PDF Resume
-                    </Button>
-                </a>
+            {isLinktree ? (
+                <></>
+            ) : (
+                <>
+                    <ButtonWrapper>
+                        <a href="/files/OliverWhiteResume.pdf" target="_blank" rel="noopener noreferrer">
+                            <Button auto size={isSmallButtonSize ? 'md' : 'lg'}>
+                                Download PDF Resume
+                            </Button>
+                        </a>
 
-                <Button auto onClick={() => query.toggle()} size={isSmallButtonSize ? 'md' : 'lg'}>
-                    Contact
-                </Button>
-            </ButtonWrapper>
-            <DescriptionWrapper>
-                <Avatar src={authorImage.default.src} alt={authorName} text={authorName} size="xl" />
-                <P dangerouslySetInnerHTML={{ __html: description }}></P>
-            </DescriptionWrapper>
+                        <Button auto onClick={() => query.toggle()} size={isSmallButtonSize ? 'md' : 'lg'}>
+                            Contact
+                        </Button>
+                    </ButtonWrapper>
+                    <DescriptionWrapper>
+                        <Avatar src={authorImage.default.src} alt={authorName} text={authorName} size="xl" />
+                        <P dangerouslySetInnerHTML={{ __html: description }}></P>
+                    </DescriptionWrapper>
+                </>
+            )}
         </header>
     );
 }
