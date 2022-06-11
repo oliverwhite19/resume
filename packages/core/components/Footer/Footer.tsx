@@ -5,7 +5,7 @@ import { authorName, defaultUrl } from '../../constants';
 const StyledFooter = styled('footer', {
     position: 'absolute',
     left: 0,
-    bottomm: 0,
+    bottom: 0,
     width: '100%',
     height: '100px',
     padding: '0 0 1.5rem',
