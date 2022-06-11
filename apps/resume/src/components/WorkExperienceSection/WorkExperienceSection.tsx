@@ -1,22 +1,56 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { config, NextUITheme, useTheme } from '@nextui-org/react';
-
 import { IWorkExperience } from '../../../_content/Work-Experience';
 import Section from '../Section';
-import Company from './Company';
 import Project from './Project';
+import TitleTooltip from '../TitleTooltip';
+import { styled } from '@stitches/react';
+
+const CompanyCard = styled('div', {
+    textAlign: 'center',
+    '> div': {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%',
+    },
+});
+
+const CompanyWrapper = styled('div', {
+    marginBottom: '2rem',
+    '& > div:first-of-type': {
+        height: 'auto',
+    },
+    '@media (max-width: 650px)': {
+        flexDirection: 'column',
+    },
+});
+
+const ProjectWrapper = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    gap: '12px',
+    '@media (max-width: 650px)': {
+        paddingLeft: '1rem',
+        borderLeft: 'solid 3px var(--nextui-colors-primary)',
+    },
+});
+
+const P = styled('p', {
+    color: 'var(--nextui-colors-accents6)',
+});
 
 function WorkExperienceSection({ title, list }: IWorkExperience) {
-    const { theme } = useTheme();
-
     return (
         <Section>
             <h2>{title}</h2>
             {list.map((company, index) => (
                 <CompanyWrapper key={index}>
-                    <Company {...company} />
-                    <ProjectWrapper theme={theme}>
+                    <CompanyCard data-testid="wrapper">
+                        <TitleTooltip text={company.name} otherLink={company.link} />
+                        <P>{company.description}</P>
+                    </CompanyCard>
+                    <ProjectWrapper>
                         {company.projects.map((project, index) => (
                             <Project key={index} {...project} />
                         ))}
@@ -28,27 +62,3 @@ function WorkExperienceSection({ title, list }: IWorkExperience) {
 }
 
 export default WorkExperienceSection;
-
-const CompanyWrapper = styled.div`
-    margin-bottom: 2rem;
-
-    & > div:first-of-type {
-        height: auto;
-    }
-
-    @media ${config.media.xsMax} {
-        flex-direction: column;
-    }
-`;
-
-const ProjectWrapper = styled.div<{ theme: NextUITheme | undefined }>`
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    gap: 12px;
-
-    @media ${config.media.xsMax} {
-        padding-left: 1rem;
-        border-left: solid 3px ${({ theme }) => theme.colors.primary.value};
-    }
-`;

@@ -1,25 +1,28 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import { Button, Tooltip, useTheme } from '@nextui-org/react';
 import { Icon } from 'core';
+import { styled } from '@stitches/react';
 
 interface Props {
     text: string;
-    githubLink: string | null;
-    otherLink: string | null;
+    githubLink?: string;
+    otherLink?: string;
 }
+const H2 = styled('h2', {
+    color: ' var(--nextui-colors-primary)',
+    cursor: 'pointer',
+    margin: 0,
+});
 
 function TitleTooltip({ text, githubLink, otherLink }: Props) {
-    return githubLink !== null || otherLink !== null ? (
+    return githubLink || otherLink ? (
         <Tooltip
             placement="top"
             content={<TooltipContent githubLink={githubLink} otherLink={otherLink} />}
             hideArrow={false}
             color={'invert'}
         >
-            <StyledButton auto light color="primary" animated={false}>
-                <h3>{text}</h3>
-            </StyledButton>
+            <H2>{text}</H2>
         </Tooltip>
     ) : (
         <h3>{text}</h3>
@@ -28,14 +31,9 @@ function TitleTooltip({ text, githubLink, otherLink }: Props) {
 
 export default TitleTooltip;
 
-const StyledButton = styled(Button)`
-    padding-left: 0;
-    padding-right: 2px;
-`;
-
 interface TooltipProps {
-    githubLink?: string | null;
-    otherLink: string | null;
+    githubLink?: string;
+    otherLink?: string;
 }
 
 export function TooltipContent({ githubLink, otherLink }: TooltipProps) {
@@ -57,6 +55,6 @@ export function TooltipContent({ githubLink, otherLink }: TooltipProps) {
     );
 }
 
-const Div = styled.div`
-    display: flex;
-`;
+const Div = styled('div', {
+    display: 'flex',
+});
