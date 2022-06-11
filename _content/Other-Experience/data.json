@@ -1,0 +1,16 @@
+{
+    "title": "Education",
+    "list": [
+        {
+            "title": {
+                "text": "Universidad de Granada",
+                "githubLink": null,
+                "otherLink": "https://www.ugr.es/en"
+            },
+            "position": "Student",
+            "endDate": "July 2017",
+            "description": "Bachelor's Degree in Computer Engineering",
+            "which": []
+        }
+    ]
+}
