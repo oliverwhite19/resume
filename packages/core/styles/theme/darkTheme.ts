@@ -16,7 +16,7 @@ export const darkTheme: any = createTheme({
             primarySolidHover: getColor(darkPrimaryDark, theme.colors.primary.value),
         },
         fonts: {
-            sans: "'Johnston Sans', 'Univers'",
+            sans: "'Rail Alphabet','Johnston Sans', 'Univers', 'Segoe UI', 'Roboto'",
         },
     },
 });
