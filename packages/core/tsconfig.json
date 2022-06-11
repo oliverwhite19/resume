@@ -21,6 +21,6 @@
         "jsx": "react-jsx",
         "typeRoots": ["types/**"]
     },
-    "include": ["."],
+    "include": [".", "../../apps/resume/src/components/Footer/index.tsx"],
     "exclude": ["dist", "build", "node_modules"]
 }

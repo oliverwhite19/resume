@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, styled } from '@nextui-org/react';
-import { authorName, defaultUrl } from '../../constants';
+import { authorName, defaultUrl } from 'core/constants';
 
 const StyledFooter = styled('footer', {
     position: 'absolute',

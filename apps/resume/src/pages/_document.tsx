@@ -1,9 +1,10 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { CssBaseline } from '@nextui-org/react';
-import { Footer, globalStyle, Layout } from 'core';
+import { globalStyle, Layout } from 'core';
 import { authorImage, authorName, favicon } from 'core/constants';
 
 import { data } from '../../_content/Header';
+import { Footer } from '../components/Footer';
 
 const TITLE = `${authorName}`;
 export default class ResumeDocument extends Document {
