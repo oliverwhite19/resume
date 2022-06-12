@@ -8,7 +8,7 @@ const getCurrency = async (base: string, currency: string) =>
 const Exchange = () => {
     const [base, setBase] = useState<{ name: string; value: string }>({ name: 'Base Currency', value: '' });
     const [exchange, setExchange] = useState<{ name: string; value: string }>({ name: 'Exchange Currency', value: '' });
-    const [result, setResult] = useState<Response>();
+    const [_result, setResult] = useState<Response>();
     useEffect(() => {
         if (base.value && exchange.value) {
             getCurrency(base.value, exchange.value).then((response) => response.json().then(setResult));
