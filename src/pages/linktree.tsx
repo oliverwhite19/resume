@@ -27,7 +27,7 @@ const SocialWrapper = styled('div', {
 const Linktree = ({ header }) => {
     return (
         <>
-            <Header isLinktree {...header} />
+            <Header hasResumeButtons={false} {...header} />
             <LinkWrapper>
                 <a href="/" target="_blank" rel="noopener noreferrer">
                     <Button>Resume</Button>

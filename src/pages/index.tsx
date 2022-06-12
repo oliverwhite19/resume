@@ -17,7 +17,7 @@ interface Props {
 function Resume({ header, workExperience, otherExperience, skills }: Props) {
     return (
         <main>
-            <Header {...header} />
+            <Header hasResumeButtons={true} {...header} />
             <WorkExperienceSection {...workExperience} />
             <OtherExperienceSection {...otherExperience} />
             <SkillsSection {...skills} />

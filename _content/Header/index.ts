@@ -3,7 +3,7 @@ import data from './data.json';
 export interface IHeader {
     heading: string;
     description: string;
-    isLinktree?: boolean;
+    hasResumeButtons?: boolean;
 }
 
 export { data };

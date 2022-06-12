@@ -106,6 +106,12 @@ const currencies = [
 
 const Button = styled(Dropdown.Button, {
     borderRadius: '2px',
+    '@xs': {
+        width: '185px !important',
+    },
+    '@xsMax': {
+        width: '100% !important',
+    },
 });
 
 const CurrencyPicker = ({
@@ -124,7 +130,9 @@ const CurrencyPicker = ({
     );
     return (
         <Dropdown>
-            <Button color="primary">{selectedName}</Button>
+            <Button color="primary" auto>
+                {selectedName}
+            </Button>
             <Dropdown.Menu
                 color="primary"
                 variant="solid"

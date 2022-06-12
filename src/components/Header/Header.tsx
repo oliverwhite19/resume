@@ -46,7 +46,7 @@ const P = styled('p', {
     marginLeft: '0.875rem',
 });
 
-function Header({ heading, description, isLinktree }: IHeader) {
+function Header({ heading, description, hasResumeButtons }: IHeader) {
     const { theme } = useTheme();
     const { query } = useKBar();
     const isSmallButtonSize = useMediaQuery(650);
@@ -64,7 +64,7 @@ function Header({ heading, description, isLinktree }: IHeader) {
 
                 <ThemeSwitch />
             </HeadingWrapper>
-            {isLinktree ? (
+            {!hasResumeButtons ? (
                 <></>
             ) : (
                 <>
