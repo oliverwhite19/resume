@@ -1,6 +1,6 @@
 import { Button, styled, useTheme } from '@nextui-org/react';
 import { useRouter } from 'next/router';
-import { slide as Menu } from 'react-burger-menu';
+import Menu from 'react-burger-menu/lib/menus/slide';
 import { Category } from 'react-iconly';
 
 const styles = (theme) => ({
@@ -10,9 +10,6 @@ const styles = (theme) => ({
         height: '30px',
         left: '18px',
         top: '36px',
-        [`@media(maxWidth: ${theme.theme.breakpoints.xs.value})`]: {
-            top: '18px',
-        },
     },
     bmBurgerBars: {
         background: theme.theme.colors.primary,
@@ -32,10 +29,6 @@ const styles = (theme) => ({
         height: '100%',
         top: 0,
         left: 0,
-
-        [`@media(maxWidth: ${theme.theme.breakpoints.xs.value})`]: {
-            width: '100% !important',
-        },
     },
     bmMenu: {
         background: theme.theme.colors.backgroundContrast,
@@ -69,6 +62,7 @@ const Offcanvas = () => {
         <Menu
             customBurgerIcon={<Category set="light" primaryColor={theme.theme.colors.primary.value} />}
             styles={styles(theme)}
+            noOverlay
         >
             <ButtonGroup vertical color="primary">
                 <Button as="a" href="/" bordered={router.pathname !== '/'}>
