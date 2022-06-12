@@ -81,9 +81,14 @@ const Exchange = () => {
                         <Button>Calculate</Button>
                     </NextContainer>
                     <Spacer />
-                    <NextContainer gap={0} css={{ display: 'flex', justifyContent: 'center' }}>
-                        <Text>{result}</Text>
-                    </NextContainer>
+                    {result && (
+                        <NextContainer gap={0} css={{ display: 'flex', justifyContent: 'center' }}>
+                            <Text h3>
+                                {quantity} {base?.value} @ {exchangeRate?.['rates']?.[exchange.value]} = {result}{' '}
+                                {exchange?.value}
+                            </Text>
+                        </NextContainer>
+                    )}
                 </Card.Body>
             </Card>
         </>
