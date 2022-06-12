@@ -7,7 +7,11 @@ const Div = styled('div', {
     width: '100%',
     minHeight: '100vh',
     margin: '0 auto',
-    padding: '2rem 1.3125rem 100px 1.3125rem',
+    padding: '2rem 1.3125rem 100px 0',
+    '@media(max-width: 1100px)': {
+        paddingLeft: '65px',
+        marginLeft: 0,
+    },
 });
 
 export function Layout({ children }: PropsWithChildren<unknown>) {

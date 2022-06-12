@@ -7,6 +7,7 @@ import { KBarProvider } from 'kbar';
 import generateKbarAction from '../constants/KbarActions';
 import { authorName } from '../constants/General';
 import { darkTheme, lightTheme } from '../styles';
+import Offcanvas from '../components/Navigation/Offcanvas';
 
 const KbarComponent = dynamic(() => import('../components/Kbar'), {
     ssr: false,
@@ -24,6 +25,7 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
                     <Title />
                     <KbarComponent />
                     <Component {...pageProps} />
+                    <Offcanvas />
                 </KBarProvider>
             </NextUIProvider>
         </NextThemesProvider>
