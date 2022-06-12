@@ -62,7 +62,6 @@ const Offcanvas = () => {
         <Menu
             customBurgerIcon={<Category set="light" primaryColor={theme.theme.colors.primary.value} />}
             styles={styles(theme)}
-            noOverlay
         >
             <ButtonGroup vertical color="primary">
                 <Button as="a" href="/" bordered={router.pathname !== '/'}>

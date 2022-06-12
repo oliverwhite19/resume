@@ -26,8 +26,16 @@ const getCurrency = async (base: string, currency: string) =>
     await fetch(`https://api.exchangerate.host/latest?base=${base}&symbols=${currency}`);
 
 const Exchange = () => {
-    const [base, setBase] = useState<{ name: string; value: string }>({ name: 'Base Currency', value: '' });
-    const [exchange, setExchange] = useState<{ name: string; value: string }>({ name: 'Exchange Currency', value: '' });
+    const [base, setBase] = useState<{ name: string; value: string; countryCode: string }>({
+        name: 'Base Currency',
+        value: '',
+        countryCode: '',
+    });
+    const [exchange, setExchange] = useState<{ name: string; value: string; countryCode: string }>({
+        name: 'Exchange Currency',
+        value: '',
+        countryCode: '',
+    });
     const [quantity, setQuantity] = useState<number>();
     const [exchangeRate, setExchangeRate] = useState<{}>();
     const [result, setResult] = useState<{}>();
@@ -68,8 +76,12 @@ const Exchange = () => {
                         <Button
                             auto
                             onClick={() => {
-                                setBase(exchange.value ? exchange : { name: 'Base Currency', value: '' });
-                                setExchange(base.value ? base : { name: 'Exchange Currency', value: '' });
+                                setBase(
+                                    exchange.value ? exchange : { name: 'Base Currency', value: '', countryCode: '' }
+                                );
+                                setExchange(
+                                    base.value ? base : { name: 'Exchange Currency', value: '', countryCode: '' }
+                                );
                             }}
                             icon={<Swap style={{ transform: 'rotate(90deg)' }} set="light" />}
                         />
