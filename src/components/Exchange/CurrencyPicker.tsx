@@ -1,156 +1,174 @@
-import { Dropdown, styled } from '@nextui-org/react';
+import { Dropdown, Spacer, styled } from '@nextui-org/react';
 import { useMemo } from 'react';
 import { map, find, values } from 'ramda';
 import ReactCountryFlag from 'react-country-flag';
+import { Currency } from '../../types';
 
-const currencies = [
+const currencies: Array<Currency> = [
     {
         name: 'Australian Dollars',
         value: 'AUD',
         countryCode: 'AU',
+        symbolLeft: 'A$',
     },
     {
-        name: 'Brazilian Lira',
+        name: 'Brazilian Real',
         value: 'BRL',
         countryCode: 'BR',
+        symbolLeft: 'R$',
     },
     {
         name: 'Great British Pounds',
         value: 'GBP',
         countryCode: 'GB',
+        symbolLeft: '£',
     },
     {
         name: 'Canadian Dollar',
         value: 'CAD',
         countryCode: 'CA',
+        symbolLeft: 'CA$',
     },
     {
         name: 'Chinese Yuan',
         value: 'CNY',
         countryCode: 'CN',
+        symbolLeft: '¥',
+        symbolRight: 'RMB',
     },
     {
         name: 'Danish Krone',
         value: 'DKK',
         countryCode: 'DK',
+        symbolRight: ' krone',
     },
     {
         name: 'Euro',
         value: 'EUR',
         countryCode: 'EU',
+        symbolLeft: '€',
     },
     {
         name: 'Hong Kong Dollar',
         value: 'HKD',
         countryCode: 'HK',
+        symbolLeft: 'HK$',
     },
     {
         name: 'Hungarian Forint',
         value: 'HUF',
         countryCode: 'HU',
+        symbolRight: ' Ft',
     },
     {
         name: 'Indonesian Rupiah',
         value: 'IDR',
         countryCode: 'ID',
+        symbolLeft: 'Rp ',
     },
     {
         name: 'Indian Rupee',
         value: 'INR',
         countryCode: 'IN',
+        symbolLeft: '₹',
     },
     {
         name: 'Israeli Shekel',
         value: 'ILS',
         countryCode: 'IL',
+        symbolLeft: '₪',
     },
     {
         name: 'Japanese Yen',
         value: 'JPY',
         countryCode: 'JP',
+        symbolLeft: '¥',
     },
     {
         name: 'Malaysian Ringgit',
         value: 'MYR',
         countryCode: 'MY',
+        symbolLeft: 'RM',
     },
     {
         name: 'Mexican Peso',
         value: 'MXN',
         countryCode: 'MX',
+        symbolLeft: 'MX$',
     },
     {
         name: 'New Zealand Dollar',
         value: 'NZD',
         countryCode: 'NZ',
+        symbolLeft: 'NZ$',
     },
     {
         name: 'Philippine Peso',
         value: 'PHP',
         countryCode: 'PH',
+        symbolLeft: '₱',
     },
     {
         name: 'Polish Złoty',
         value: 'PLN',
         countryCode: 'PL',
+        symbolLeft: 'zł',
     },
     {
         name: 'Russian Ruble',
         value: 'RUB',
         countryCode: 'RU',
+        symbolRight: '₽',
     },
     {
         name: 'Singapore Dollar',
         value: 'SGD',
         countryCode: 'SG',
+        symbolLeft: 'S$',
     },
     {
         name: 'South Korean Won',
         value: 'KRW',
         countryCode: 'KR',
+        symbolLeft: '₩',
     },
     {
         name: 'Swedish Krona',
         value: 'SEK',
         countryCode: 'SE',
+        symbolRight: ' kr',
     },
     {
         name: 'Swiss Franc',
         value: 'CHF',
         countryCode: 'CH',
+        symbolRight: ' Fr.',
     },
     {
         name: 'Thai Baht',
         value: 'THB',
         countryCode: 'TH',
+        symbolLeft: '฿',
     },
     {
         name: 'United States Dollar',
         value: 'USD',
         countryCode: 'US',
+        symbolLeft: '$',
     },
 ];
 
 const Button = styled(Dropdown.Button, {
     borderRadius: '2px',
     '@xs': {
-        width: '185px !important',
+        width: '210px !important',
     },
     '@xsMax': {
         width: '100% !important',
     },
 });
 
-const CurrencyPicker = ({
-    onSelect,
-    selected,
-}: {
-    onSelect: (value: { name: string; value: string; countryCode: string }) => void;
-    selected?: { name: string; value: string; countryCode: string };
-}) => {
-    const selectedName = useMemo(() => selected?.name, [selected]);
-    const selectedValue = useMemo(() => selected?.value, [selected]);
-    const selectedCode = useMemo(() => selected?.countryCode, [selected]);
+const CurrencyPicker = ({ onSelect, selected }: { onSelect: (value: Currency) => void; selected?: Currency }) => {
     const mapOptions = useMemo(
         () =>
             map(({ value, name, countryCode }) => (
@@ -166,15 +184,20 @@ const CurrencyPicker = ({
     );
     return (
         <Dropdown>
-            <Button color="primary" auto>
-                {selectedCode && <ReactCountryFlag countryCode={selectedCode} />}
-                {selectedName}
+            <Button color="primary" auto bordered>
+                {selected.countryCode && (
+                    <>
+                        <ReactCountryFlag countryCode={selected.countryCode} />
+                        <Spacer x={0.5} />
+                    </>
+                )}{' '}
+                {selected.name}
             </Button>
             <Dropdown.Menu
                 color="primary"
                 variant="solid"
                 selectionMode="single"
-                selectedKeys={selectedValue}
+                selectedKeys={selected.value}
                 onSelectionChange={(value) => onSelect(getSelected(value))}
             >
                 {mapOptions(currencies)}

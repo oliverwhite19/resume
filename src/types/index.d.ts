@@ -2,3 +2,11 @@ declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.ico';
+
+export type Currency = {
+    name: string;
+    value: string;
+    countryCode: string;
+    symbolLeft?: string;
+    symbolRight?: string;
+};

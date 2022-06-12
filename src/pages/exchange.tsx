@@ -1,11 +1,26 @@
-import { Button as NextButton, Card, Container as NextContainer, Input, Spacer, styled, Text } from '@nextui-org/react';
+import {
+    Button as NextButton,
+    Card,
+    Container as NextContainer,
+    Input as NextInput,
+    Spacer,
+    styled,
+    Text,
+} from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import CurrencyPicker from '../components/Exchange/CurrencyPicker';
 import Header from '../components/Header';
 import { Swap } from 'react-iconly';
+import { Currency } from '../types';
 
 const Button = styled(NextButton, {
     borderRadius: '2px',
+});
+const Input = styled(NextInput, {
+    borderRadius: '2px',
+    '@sm': {
+        width: '210px !important',
+    },
 });
 
 const Container = styled(NextContainer, {
@@ -13,9 +28,6 @@ const Container = styled(NextContainer, {
         '& > div': {
             width: '100% !important',
         },
-    },
-
-    '@xsMax': {
         '& > span': {
             width: '100% !important',
         },
@@ -26,12 +38,12 @@ const getCurrency = async (base: string, currency: string) =>
     await fetch(`https://api.exchangerate.host/latest?base=${base}&symbols=${currency}`);
 
 const Exchange = () => {
-    const [base, setBase] = useState<{ name: string; value: string; countryCode: string }>({
+    const [base, setBase] = useState<Currency>({
         name: 'Base Currency',
         value: '',
         countryCode: '',
     });
-    const [exchange, setExchange] = useState<{ name: string; value: string; countryCode: string }>({
+    const [exchange, setExchange] = useState<Currency>({
         name: 'Exchange Currency',
         value: '',
         countryCode: '',
@@ -64,8 +76,11 @@ const Exchange = () => {
                     <Container gap={0} css={{ display: 'flex', justifyContent: 'center' }}>
                         <Input
                             color="primary"
-                            labelLeft="Quantity"
+                            bordered
                             type="number"
+                            placeholder="Quantity"
+                            labelLeft={base?.symbolLeft}
+                            labelRight={base?.symbolRight}
                             onBlur={(event) => {
                                 setQuantity(parseFloat(event.target.value));
                             }}
@@ -96,8 +111,11 @@ const Exchange = () => {
                     {result && (
                         <NextContainer gap={0} css={{ display: 'flex', justifyContent: 'center' }}>
                             <Text h3>
-                                {quantity} {base?.value} @ {exchangeRate?.['rates']?.[exchange.value]} = {result}{' '}
-                                {exchange?.value}
+                                {base.symbolLeft}
+                                {quantity}
+                                {base.symbolRight} @ {exchangeRate?.['rates']?.[exchange.value]} = {exchange.symbolLeft}
+                                {result}
+                                {exchange.symbolRight}
                             </Text>
                         </NextContainer>
                     )}
