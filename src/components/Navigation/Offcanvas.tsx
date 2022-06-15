@@ -1,8 +1,10 @@
+import { useUser } from '@auth0/nextjs-auth0';
 import { Button, styled, useTheme } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Menu from 'react-burger-menu/lib/menus/slide';
 import { Category } from 'react-iconly';
 
+// None of this can use stitches unfortunately
 const styles = (theme) => ({
     bmBurgerButton: {
         position: 'fixed',
@@ -45,6 +47,9 @@ const styles = (theme) => ({
     bmItem: {
         display: 'inline-block',
     },
+    bmOverlay: {
+        top: 0,
+    },
 });
 
 const ButtonGroup = styled(Button.Group, {
@@ -55,13 +60,23 @@ const ButtonGroup = styled(Button.Group, {
     },
 });
 
+const AuthButtons = styled('div', {
+    margin: '$3',
+    '& > a': {
+        borderRadius: '2px',
+    },
+});
+
 const Offcanvas = () => {
     const theme = useTheme();
     const router = useRouter();
+    const { user } = useUser();
     return (
         <Menu
             customBurgerIcon={<Category set="light" primaryColor={theme.theme.colors.primary.value} />}
             styles={styles(theme)}
+            noOverlay={false}
+            disableOverlayClick={false}
         >
             <ButtonGroup vertical color="primary">
                 <Button as="a" href="/" bordered={router.pathname !== '/'}>
@@ -74,6 +89,24 @@ const Offcanvas = () => {
                     Linktree
                 </Button>
             </ButtonGroup>
+
+            <AuthButtons>
+                {user ? (
+                    <Button
+                        as="a"
+                        shadow
+                        color="warning"
+                        bordered
+                        href={`/api/auth/logout?returnTo=${router.pathname}`}
+                    >
+                        Logout
+                    </Button>
+                ) : (
+                    <Button as="a" shadow color="success" href={`/api/auth/login?returnTo=${router.pathname}`}>
+                        Login
+                    </Button>
+                )}
+            </AuthButtons>
         </Menu>
     );
 };
