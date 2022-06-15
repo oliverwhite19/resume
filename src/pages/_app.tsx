@@ -8,6 +8,7 @@ import generateKbarAction from '../constants/KbarActions';
 import { authorName } from '../constants/General';
 import { darkTheme, lightTheme } from '../styles';
 import Offcanvas from '../components/Navigation/Offcanvas';
+import { UserProvider } from '@auth0/nextjs-auth0';
 
 const KbarComponent = dynamic(() => import('../components/Kbar'), {
     ssr: false,
@@ -20,14 +21,16 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
             attribute="class"
             value={{ light: lightTheme.className, dark: darkTheme.className }}
         >
-            <NextUIProvider>
-                <KBarProvider actions={generateKbarAction()}>
-                    <Title />
-                    <KbarComponent />
-                    <Component {...pageProps} />
-                    <Offcanvas />
-                </KBarProvider>
-            </NextUIProvider>
+            <UserProvider>
+                <NextUIProvider>
+                    <KBarProvider actions={generateKbarAction()}>
+                        <Title />
+                        <KbarComponent />
+                        <Component {...pageProps} />
+                        <Offcanvas />
+                    </KBarProvider>
+                </NextUIProvider>
+            </UserProvider>
         </NextThemesProvider>
     );
 }
