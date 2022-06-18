@@ -31,6 +31,7 @@ const afterCallback = async (req, res, session) => {
         session.user.id = currentUser.id;
         return session;
     } catch (error) {
+        Sentry.captureException(error);
         res.status(error.status || 500).end(error.message);
     }
 };
@@ -41,6 +42,7 @@ export default Sentry.withSentry(
             try {
                 await handleCallback(req, res, { afterCallback });
             } catch (error) {
+                Sentry.captureException(error);
                 res.status(error.status || 500).end(error.message);
             }
         },
