@@ -30,7 +30,6 @@ module.exports = {
             { format: ['PascalCase'], selector: 'interface' },
             { format: ['PascalCase'], selector: 'typeAlias' },
         ],
-        '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
         '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
         'prefer-const': 'error',
         'no-var': 'error',
