@@ -62,6 +62,7 @@ const ButtonGroup = styled(Button.Group, {
 
 const AuthButtons = styled('div', {
     margin: '$3',
+    width: '100%',
     '& > a': {
         borderRadius: '2px',
     },
