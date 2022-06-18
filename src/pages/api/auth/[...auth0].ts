@@ -32,6 +32,7 @@ const afterCallback = async (req, res, session) => {
         return session;
     } catch (error) {
         Sentry.captureException(error);
+        throw error;
         res.status(error.status || 500).end(error.message);
     }
 };
@@ -43,6 +44,7 @@ export default Sentry.withSentry(
                 await handleCallback(req, res, { afterCallback });
             } catch (error) {
                 Sentry.captureException(error);
+                throw error;
                 res.status(error.status || 500).end(error.message);
             }
         },
