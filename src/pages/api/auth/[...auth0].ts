@@ -1,5 +1,5 @@
 import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../../../../prisma/generated/client1';
 
 const prisma = new PrismaClient({
     log: ['query', 'info', 'warn', 'error'],

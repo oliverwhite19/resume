@@ -1,3 +1,5 @@
+import { Prisma } from '../../prisma/generated/client2';
+
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
@@ -10,3 +12,7 @@ export type Currency = {
     symbolLeft?: string;
     symbolRight?: string;
 };
+
+type EmploymentWithPositions = Prisma.EmploymentGetPayload<{
+    include: { positions: true };
+}>;

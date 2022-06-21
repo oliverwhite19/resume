@@ -1,9 +1,9 @@
 import React from 'react';
-import { IWorkExperience } from '../../../_content/Work-Experience';
 import Section from '../Section';
 import Project from './Project';
 import TitleTooltip from '../TitleTooltip';
 import { styled } from '@nextui-org/react';
+import { EmploymentWithPositions } from '../../types';
 
 const CompanyCard = styled('div', {
     textAlign: 'center',
@@ -40,19 +40,19 @@ const P = styled('p', {
     color: '$accents6',
 });
 
-function WorkExperienceSection({ title, list }: IWorkExperience) {
+function WorkExperienceSection(companies: EmploymentWithPositions[]) {
     return (
         <Section>
-            <h2>{title}</h2>
-            {list.map((company, index) => (
+            <h2>Professional Experience</h2>
+            {companies.map((company, index) => (
                 <CompanyWrapper key={index}>
                     <CompanyCard data-testid="wrapper">
-                        <TitleTooltip text={company.name} otherLink={company.link} />
-                        <P>{company.description}</P>
+                        <TitleTooltip text={company.company} otherLink={company.companyLink} />
+                        <P>{company.descriptor}</P>
                     </CompanyCard>
                     <ProjectWrapper>
-                        {company.projects.map((project, index) => (
-                            <Project key={index} {...project} />
+                        {company.positions.map((position, index) => (
+                            <Project key={index} {...position} />
                         ))}
                     </ProjectWrapper>
                 </CompanyWrapper>

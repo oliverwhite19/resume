@@ -1,28 +1,29 @@
 import React from 'react';
 import { styled } from '@nextui-org/react';
 
-import { IProject } from '../../../_content/Work-Experience';
 import Li from '../Li';
 import TitleTooltip from '../TitleTooltip';
+import { Position } from '../../../prisma/generated/client2';
+import { format } from 'date-fns';
 
-function Project({ title, startDate, endDate, which, techStack }: IProject) {
+function Project({ title, start, end, details, technologies }: Position) {
     return (
         <Div>
-            <TitleTooltip {...title} />
+            <TitleTooltip text={title} />
             <small>
-                {startDate} - {endDate}
+                {format(start, 'LLLL yyy')} - {format(end, 'LLLL yyy')}
             </small>
-            {which.length > 0 && (
+            {details.length > 0 && (
                 <ul data-testid="which wrapper">
-                    {which.map((each, index) => (
+                    {details.map((each, index) => (
                         <Li key={index}>{each}</Li>
                     ))}
                 </ul>
             )}
 
-            {techStack && techStack.length > 0 && (
+            {technologies && technologies.length > 0 && (
                 <TechDiv data-testid="tech stack wrapper">
-                    {techStack.map((tech, index) => (
+                    {technologies.map((tech, index) => (
                         <TechSpan key={index}>{tech}</TechSpan>
                     ))}
                 </TechDiv>
