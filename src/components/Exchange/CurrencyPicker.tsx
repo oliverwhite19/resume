@@ -1,8 +1,8 @@
 import { Dropdown, Spacer, styled } from '@nextui-org/react';
 import { useMemo } from 'react';
 import { map, find, values } from 'ramda';
-import ReactCountryFlag from 'react-country-flag';
 import { Currency } from '../../types';
+import Flag from 'react-flagkit';
 
 const currencies: Array<Currency> = [
     {
@@ -172,7 +172,7 @@ const CurrencyPicker = ({ onSelect, selected }: { onSelect: (value: Currency) =>
     const mapOptions = useMemo(
         () =>
             map(({ value, name, countryCode }) => (
-                <Dropdown.Item key={value} icon={<ReactCountryFlag countryCode={countryCode} />}>
+                <Dropdown.Item key={value} icon={<Flag country={countryCode} />}>
                     {name}
                 </Dropdown.Item>
             )),
@@ -187,7 +187,7 @@ const CurrencyPicker = ({ onSelect, selected }: { onSelect: (value: Currency) =>
             <Button color="primary" auto bordered>
                 {selected.countryCode && (
                     <>
-                        <ReactCountryFlag countryCode={selected.countryCode} />
+                        <Flag country={selected.countryCode} />
                         <Spacer x={0.5} />
                     </>
                 )}{' '}
