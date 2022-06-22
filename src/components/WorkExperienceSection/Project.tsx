@@ -11,7 +11,7 @@ function Project({ title, start, end, details, technologies }: Position) {
         <Div>
             <TitleTooltip text={title} />
             <small>
-                {format(start, 'LLLL yyy')} - {format(end, 'LLLL yyy')}
+                {start && format(start, 'LLLL yyy')} - {end ? format(end, 'LLLL yyy') : 'Present'}
             </small>
             {details.length > 0 && (
                 <ul data-testid="which wrapper">

@@ -40,7 +40,7 @@ const P = styled('p', {
     color: '$accents6',
 });
 
-function WorkExperienceSection(companies: EmploymentWithPositions[]) {
+function WorkExperienceSection({ companies }: { companies: EmploymentWithPositions[] }) {
     return (
         <Section>
             <h2>Professional Experience</h2>

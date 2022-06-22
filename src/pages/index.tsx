@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import OtherExperienceSection from '../components/OtherExperienceSection';
 import SkillsSection from '../components/SkillsSection/SkillsSection';
 import WorkExperienceSection from '../components/WorkExperienceSection';
+import { toJob } from '../helpers';
 import { EmploymentWithPositions } from '../types';
 
 interface Props {
@@ -18,7 +19,7 @@ function Resume({ header, workExperience, otherExperience, skills }: Props) {
     return (
         <main>
             <Header hasResumeButtons={true} {...header} />
-            <WorkExperienceSection {...workExperience} />
+            <WorkExperienceSection companies={workExperience.map((experience) => toJob(experience))} />
             <OtherExperienceSection {...otherExperience} />
             <SkillsSection {...skills} />
         </main>
