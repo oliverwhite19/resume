@@ -4,19 +4,31 @@ import { Button, Spacer } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { NewMessages } from '../components/Messages/NewMessages';
 import { Message } from '../components/Messages/Message';
-import JoinChildren from '../helpers/react-join-children';
+import joinChildren from '../helpers/joinChildren';
+import { toMessage } from '../helpers';
 
 const Messages = () => {
     const { user } = useUser();
     const [messages, setMessages] = useState([]);
     const [isLoading, setLoading] = useState(false);
 
+    const addMessage = async (message) =>
+        setMessages(
+            await fetch('/api/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message),
+            }).then((value) => value.json())
+        );
+
     useEffect(() => {
         setLoading(true);
         fetch('/api/messages')
             .then((res) => res.json())
             .then((data) => {
-                setMessages(data);
+                setMessages(data.map((d) => toMessage(d)));
                 setLoading(false);
             });
     }, []);
@@ -38,20 +50,18 @@ const Messages = () => {
                 <p>Loading...</p>
             </>
         );
-
-    // list of my messages and the server responses
     return (
         <>
             <Header hasResumeButtons={false} heading={'Message Centre'} description="" />
-            <NewMessages onAddMessage={setMessages} />
+            <NewMessages addMessage={addMessage} title="Send me a message" />
             <Spacer />
-            {JoinChildren(
+            {joinChildren(
                 messages,
-                (message) => (
-                    <Message {...message} />
+                (message, index) => (
+                    <Message key={index} {...message} />
                 ),
-                () => (
-                    <Spacer />
+                (index) => (
+                    <Spacer key={index} />
                 )
             )}
         </>

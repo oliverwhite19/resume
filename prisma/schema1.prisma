@@ -23,14 +23,14 @@ model User {
 }
 
 model Message {
-  id          String    @id @default(uuid()) @db.Uuid
-  userId      String    @db.Uuid
-  responseeId String?   @unique @db.Uuid
-  text        String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now())
-  deletedAt   DateTime?
-  author      User      @relation(fields: [userId], references: [id])
-  response    Message?  @relation("Response")
-  responsee   Message?  @relation("Response", fields: [responseeId], references: [id])
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  responseId String?   @unique @db.Uuid
+  text       String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now())
+  deletedAt  DateTime?
+  author     User      @relation(fields: [userId], references: [id])
+  response   Message?  @relation("Response", fields: [responseId], references: [id])
+  responsee  Message?  @relation("Response")
 }

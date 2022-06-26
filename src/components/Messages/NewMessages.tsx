@@ -1,7 +1,7 @@
 import { Button, Input, Spacer, Text } from '@nextui-org/react';
 import { useForm } from 'react-hook-form';
 
-const NewMessages = ({ onAddMessage }) => {
+const NewMessages = ({ title, addMessage }) => {
     const {
         register,
         handleSubmit,
@@ -9,20 +9,12 @@ const NewMessages = ({ onAddMessage }) => {
         reset,
     } = useForm();
     const onSubmit = async (data) => {
-        onAddMessage(
-            await fetch('/api/messages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            }).then((value) => value.json())
-        );
+        addMessage(data);
         reset();
     };
     return (
         <>
-            <Text h2>Send me a new message</Text>
+            {title && <Text h2>{title}</Text>}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input.Textarea fullWidth placeholder="Message..." {...register('message', { required: true })} />
                 <Text color="error">{errors.message?.type === 'required' && 'Message is required'}</Text>

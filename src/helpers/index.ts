@@ -23,3 +23,12 @@ export const toEducation = (educations: any): Array<Education> => {
         end: parseISO(edu.end),
     }));
 };
+
+export const toMessage = (message: any) => {
+    return {
+        ...message,
+        createdAt: parseISO(message.createdAt),
+        updatedAt: parseISO(message.updatedAt),
+        response: message.response ? toMessage(message.response) : undefined,
+    };
+};
