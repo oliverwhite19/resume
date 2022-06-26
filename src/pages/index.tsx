@@ -15,8 +15,8 @@ function Resume({ header, workExperience, otherExperience }: Props) {
     return (
         <main>
             <Header hasResumeButtons={true} {...header} />
-            <WorkExperienceSection companies={workExperience.map((experience) => toJob(experience))} />
-            <OtherExperienceSection title={otherExperience.title} list={toEducation(otherExperience.list)} />
+            <WorkExperienceSection companies={workExperience?.map((experience) => toJob(experience))} />
+            <OtherExperienceSection title={otherExperience?.title} list={toEducation(otherExperience?.list)} />
         </main>
     );
 }
@@ -27,6 +27,7 @@ export async function getStaticProps() {
     try {
         const employmentQuery = await fetch(`${process.env.APP_URL}/api/employment`);
         const educationQuery = await fetch(`${process.env.APP_URL}/api/education`);
+        throw new Error();
         return {
             props: {
                 header: headerData,

@@ -44,7 +44,7 @@ function WorkExperienceSection({ companies }: { companies: EmploymentWithPositio
     return (
         <Section>
             <h2>Professional Experience</h2>
-            {companies.map((company, index) => (
+            {companies?.map((company, index) => (
                 <CompanyWrapper key={index}>
                     <CompanyCard data-testid="wrapper">
                         <TitleTooltip text={company.company} otherLink={company.companyLink} />

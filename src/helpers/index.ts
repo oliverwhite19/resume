@@ -18,7 +18,7 @@ export const toJob = (employment: any): EmploymentWithPositions => {
 };
 
 export const toEducation = (educations: any): Array<Education> => {
-    return educations.map((edu) => ({
+    return educations?.map((edu) => ({
         ...edu,
         end: parseISO(edu.end),
     }));

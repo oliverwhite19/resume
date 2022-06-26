@@ -9,7 +9,7 @@ function OtherExperienceSection({ title, list }: EducationWithTitle) {
         <Section>
             <h2>{title}</h2>
 
-            {list.map((experience, index) => (
+            {list?.map((experience, index) => (
                 <Experience key={index} {...experience} />
             ))}
         </Section>
