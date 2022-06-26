@@ -27,7 +27,6 @@ export async function getStaticProps() {
     try {
         const employmentQuery = await fetch(`${process.env.APP_URL}/api/employment`);
         const educationQuery = await fetch(`${process.env.APP_URL}/api/education`);
-        throw new Error();
         return {
             props: {
                 header: headerData,
