@@ -24,14 +24,18 @@ function Resume({ header, workExperience, otherExperience }: Props) {
 export default Resume;
 
 export async function getStaticProps() {
-    const employmentQuery = await fetch(`${process.env.APP_URL}/api/employment`);
-    const educationQuery = await fetch(`${process.env.APP_URL}/api/education`);
-    return {
-        props: {
-            header: headerData,
-            workExperience: await employmentQuery.json(),
-            otherExperience: await educationQuery.json(),
-        },
-        revalidate: 60,
-    };
+    try {
+        const employmentQuery = await fetch(`${process.env.APP_URL}/api/employment`);
+        const educationQuery = await fetch(`${process.env.APP_URL}/api/education`);
+        return {
+            props: {
+                header: headerData,
+                workExperience: await employmentQuery.json(),
+                otherExperience: await educationQuery.json(),
+            },
+            revalidate: 60,
+        };
+    } catch (e) {
+        return { props: {} };
+    }
 }
