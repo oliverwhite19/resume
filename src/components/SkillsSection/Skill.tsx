@@ -1,10 +1,9 @@
 import React from 'react';
 import { styled } from '@nextui-org/react';
 
-import { ISkill } from '../../../_content/Skills';
 import Li from '../Li';
 
-function Skill({ name, descriptions }: ISkill) {
+function Skill({ name, descriptions }) {
     return (
         <Div>
             <h3>{name}</h3>
