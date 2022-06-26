@@ -1,22 +1,25 @@
+import { PrismaClient } from '../../prisma/generated/client2';
 import { data as headerData, IHeader } from '../../_content/Header';
 import Header from '../components/Header';
 import OtherExperienceSection from '../components/OtherExperienceSection';
 import WorkExperienceSection from '../components/WorkExperienceSection';
 import { toEducation, toJob } from '../helpers';
-import { EducationWithTitle, EmploymentWithPositions } from '../types';
 
 interface Props {
     header: IHeader;
-    workExperience: EmploymentWithPositions[];
-    otherExperience: EducationWithTitle;
+    workExperience: string;
+    otherExperience: string;
 }
 
 function Resume({ header, workExperience, otherExperience }: Props) {
     return (
         <main>
             <Header hasResumeButtons={true} {...header} />
-            <WorkExperienceSection companies={workExperience?.map((experience) => toJob(experience))} />
-            <OtherExperienceSection title={otherExperience?.title} list={toEducation(otherExperience?.list)} />
+            <WorkExperienceSection companies={JSON.parse(workExperience)?.map((experience) => toJob(experience))} />
+            <OtherExperienceSection
+                title={JSON.parse(otherExperience)?.title}
+                list={toEducation(JSON.parse(otherExperience)?.list)}
+            />
         </main>
     );
 }
@@ -24,18 +27,15 @@ function Resume({ header, workExperience, otherExperience }: Props) {
 export default Resume;
 
 export async function getStaticProps() {
-    try {
-        const employmentQuery = await fetch(`${process.env.APP_URL}/api/employment`);
-        const educationQuery = await fetch(`${process.env.APP_URL}/api/education`);
-        return {
-            props: {
-                header: headerData,
-                workExperience: await employmentQuery.json(),
-                otherExperience: await educationQuery.json(),
-            },
-            revalidate: 60,
-        };
-    } catch (e) {
-        return { props: {} };
-    }
+    const prisma = new PrismaClient();
+    const employmentData = await prisma.employment.findMany({ include: { positions: true } });
+    const educationData = await prisma.education.findMany();
+    return {
+        props: {
+            header: headerData,
+            workExperience: JSON.stringify(employmentData),
+            otherExperience: JSON.stringify({ title: 'Eductation', list: educationData }),
+        },
+        revalidate: 60,
+    };
 }
