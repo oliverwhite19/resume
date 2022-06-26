@@ -27,3 +27,11 @@ model Position {
   details      String[]
   technologies String[]
 }
+
+model Education {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String?
+  link String?
+  end DateTime?
+  description String?
+}

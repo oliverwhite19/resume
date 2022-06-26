@@ -1,4 +1,4 @@
-import { Prisma } from '../../prisma/generated/client2';
+import { Education, Prisma } from '../../prisma/generated/client2';
 
 declare module '*.png';
 declare module '*.jpg';
@@ -16,3 +16,8 @@ export type Currency = {
 type EmploymentWithPositions = Prisma.EmploymentGetPayload<{
     include: { positions: true };
 }>;
+
+type EducationWithTitle = {
+    title: string;
+    list: Array<Education>;
+};

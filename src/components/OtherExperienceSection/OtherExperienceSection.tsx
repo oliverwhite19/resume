@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { IOtherExperience } from '../../../_content/Other-Experience';
+import { EducationWithTitle } from '../../types';
 import Section from '../Section';
 import Experience from './Experience';
 
-function OtherExperienceSection({ title, list }: IOtherExperience) {
+function OtherExperienceSection({ title, list }: EducationWithTitle) {
     return (
         <Section>
             <h2>{title}</h2>

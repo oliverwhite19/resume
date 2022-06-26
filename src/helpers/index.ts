@@ -1,5 +1,5 @@
 import { parseISO } from 'date-fns';
-import { Position } from '../../prisma/generated/client2';
+import { Education, Position } from '../../prisma/generated/client2';
 import { EmploymentWithPositions } from '../types';
 
 export const toPosition = (position): Position => {
@@ -15,4 +15,11 @@ export const toJob = (employment: any): EmploymentWithPositions => {
         ...employment,
         positions: employment.positions.map((position) => toPosition(position)),
     };
+};
+
+export const toEducation = (educations: any): Array<Education> => {
+    return educations.map((edu) => ({
+        ...edu,
+        end: parseISO(edu.end),
+    }));
 };

@@ -1,27 +1,22 @@
 import { data as headerData, IHeader } from '../../_content/Header';
-import { data as otherExperienceDate, IOtherExperience } from '../../_content/Other-Experience';
-import { data as skillsData, ISkills } from '../../_content/Skills';
 import Header from '../components/Header';
 import OtherExperienceSection from '../components/OtherExperienceSection';
-import SkillsSection from '../components/SkillsSection/SkillsSection';
 import WorkExperienceSection from '../components/WorkExperienceSection';
-import { toJob } from '../helpers';
-import { EmploymentWithPositions } from '../types';
+import { toEducation, toJob } from '../helpers';
+import { EducationWithTitle, EmploymentWithPositions } from '../types';
 
 interface Props {
     header: IHeader;
     workExperience: EmploymentWithPositions[];
-    otherExperience: IOtherExperience;
-    skills: ISkills;
+    otherExperience: EducationWithTitle;
 }
 
-function Resume({ header, workExperience, otherExperience, skills }: Props) {
+function Resume({ header, workExperience, otherExperience }: Props) {
     return (
         <main>
             <Header hasResumeButtons={true} {...header} />
             <WorkExperienceSection companies={workExperience.map((experience) => toJob(experience))} />
-            <OtherExperienceSection {...otherExperience} />
-            <SkillsSection {...skills} />
+            <OtherExperienceSection title={otherExperience.title} list={toEducation(otherExperience.list)} />
         </main>
     );
 }
@@ -30,12 +25,12 @@ export default Resume;
 
 export async function getStaticProps() {
     const employmentQuery = await fetch(`${process.env.APP_URL}/api/employment`);
+    const educationQuery = await fetch(`${process.env.APP_URL}/api/education`);
     return {
         props: {
             header: headerData,
             workExperience: await employmentQuery.json(),
-            otherExperience: otherExperienceDate,
-            skills: skillsData,
+            otherExperience: await educationQuery.json(),
         },
         revalidate: 60,
     };

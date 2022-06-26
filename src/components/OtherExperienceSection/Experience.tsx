@@ -1,22 +1,15 @@
 import React from 'react';
 import { styled } from '@nextui-org/react';
-import { IExperience } from '../../../_content/Other-Experience';
-import Li from '../Li';
 import TitleTooltip from '../TitleTooltip';
+import { Education } from '../../../prisma/generated/client2';
+import { format } from 'date-fns';
 
-function Experience({ title, endDate, description, which }: IExperience) {
+function Experience({ title, link, end, description }: Education) {
     return (
         <Div>
-            <TitleTooltip {...title} />
-            <small>{endDate}</small>
+            <TitleTooltip text={title} otherLink={link} />
+            <small>{format(end, 'LLLL yyy')}</small>
             <p>{description}</p>
-            {which.length > 0 && (
-                <ul>
-                    {which.map((each, index) => (
-                        <Li key={index}>{each}</Li>
-                    ))}
-                </ul>
-            )}
         </Div>
     );
 }
