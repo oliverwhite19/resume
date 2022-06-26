@@ -6,7 +6,7 @@
         "generate": "prisma generate --schema prisma/schema1.prisma && prisma generate --schema prisma/schema2.prisma",
         "predev": " yarn generate && node ./scripts/generate-static-files.mjs",
         "dev": "next dev --port 3000",
-        "prebuild": "yarn generate && node ./scripts/generate-static-files.mjs && prisma migrate deploy",
+        "prebuild": "yarn generate && node ./scripts/generate-static-files.mjs && prisma migrate deploy --schema ./prisma/schema1.prisma",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
