@@ -9,6 +9,8 @@ import { authorName } from '../constants/General';
 import { darkTheme, lightTheme } from '../styles';
 import Offcanvas from '../components/Navigation/Offcanvas';
 import { UserProvider } from '@auth0/nextjs-auth0';
+import { Layout } from '../components/Layout';
+import { Footer } from '../components/Footer';
 
 const KbarComponent = dynamic(() => import('../components/Kbar'), {
     ssr: false,
@@ -26,7 +28,10 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
                     <KBarProvider actions={generateKbarAction()}>
                         <Title />
                         <KbarComponent />
-                        <Component {...pageProps} />
+                        <Layout>
+                            <Component {...pageProps} />
+                            <Footer />
+                        </Layout>
                         <Offcanvas />
                     </KBarProvider>
                 </NextUIProvider>
