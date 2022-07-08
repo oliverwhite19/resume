@@ -68,6 +68,15 @@ const AuthButtons = styled('div', {
     },
 });
 
+const NavbarButton = ({ title, url }: { title: string; url: string }) => {
+    const router = useRouter();
+    return (
+        <Button as="a" href={url} bordered={router.pathname !== url}>
+            {title}
+        </Button>
+    );
+};
+
 const Offcanvas = () => {
     const theme = useTheme();
     const router = useRouter();
@@ -80,15 +89,10 @@ const Offcanvas = () => {
             disableOverlayClick={false}
         >
             <ButtonGroup vertical color="primary">
-                <Button as="a" href="/" bordered={router.pathname !== '/'}>
-                    Resume
-                </Button>
-                <Button as="a" href="/exchange" bordered={router.pathname !== '/exchange'}>
-                    Exchange
-                </Button>
-                <Button as="a" href="/linktree" bordered={router.pathname !== '/linktree'}>
-                    Linktree
-                </Button>
+                <NavbarButton title="Resume" url="/" />
+                <NavbarButton title="Exchange" url="/exchange" />
+                <NavbarButton title="Linktree" url="/linktree" />
+                <NavbarButton title="Messages" url="/messages" />
             </ButtonGroup>
 
             <AuthButtons>

@@ -2,8 +2,6 @@ import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { CssBaseline } from '@nextui-org/react';
 
 import { data } from '../../_content/Header';
-import { Footer } from '../components/Footer';
-import { Layout } from '../components/Layout';
 import { authorImage, authorName, favicon } from '../constants/General';
 import { globalStyle } from '../styles';
 
@@ -15,7 +13,6 @@ export default class ResumeDocument extends Document {
             <Html lang="ko">
                 <Head>
                     {CssBaseline.flush()}
-
                     <link rel="icon" href={favicon.default.src} />
                     <meta httpEquiv="Content-type" content="text/html; charset=utf-8" />
                     <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -32,10 +29,7 @@ export default class ResumeDocument extends Document {
                     <meta name="twitter:image" content={authorImage.default.src} />
                 </Head>
                 <body>
-                    <Layout>
-                        <Main />
-                        <Footer />
-                    </Layout>
+                    <Main />
                     <NextScript />
                 </body>
             </Html>

@@ -1,5 +1,5 @@
-import { Education, Prisma } from '../../prisma/generated/client2';
-
+import { Education, Prisma2 } from '../../prisma/generated/client2';
+import { Education, Prisma1 } from '../../prisma/generated/client1';
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
@@ -13,7 +13,7 @@ export type Currency = {
     symbolRight?: string;
 };
 
-type EmploymentWithPositions = Prisma.EmploymentGetPayload<{
+type EmploymentWithPositions = Prisma2.EmploymentGetPayload<{
     include: { positions: true };
 }>;
 
@@ -21,3 +21,7 @@ type EducationWithTitle = {
     title: string;
     list: Array<Education>;
 };
+
+type MessageWithRelations = Prisma1.MessageGetPayload<{
+    include: { response: true; author: true };
+}>;

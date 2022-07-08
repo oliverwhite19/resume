@@ -16,6 +16,7 @@ const afterCallback = async (req, res, session) => {
                     familyName: session?.user.family_name,
                     name: session?.user.name,
                     nickname: session?.user.nickname,
+                    picture: session.user.picture,
                     updatedAt: new Date(),
                 },
             });
