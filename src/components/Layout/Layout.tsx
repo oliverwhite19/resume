@@ -7,10 +7,9 @@ const Div = styled('div', {
     width: '100%',
     minHeight: '100vh',
     margin: '0 auto',
-    padding: '2rem 1.3125rem 100px 0',
-    '@media(max-width: 1100px)': {
-        paddingLeft: '65px',
-        marginLeft: 0,
+    padding: '2rem 1.3125rem 100px 1.3125rem',
+    '@media(max-width: 1000px)': {
+        padding: '52px 1.3125rem 100px 1.3125rem',
     },
 });
 

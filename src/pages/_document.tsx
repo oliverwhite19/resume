@@ -10,7 +10,7 @@ export default class ResumeDocument extends Document {
     render() {
         globalStyle();
         return (
-            <Html lang="ko">
+            <Html lang="en">
                 <Head>
                     {CssBaseline.flush()}
                     <link rel="icon" href={favicon.default.src} />
@@ -19,7 +19,7 @@ export default class ResumeDocument extends Document {
                     <meta name="description" content={data.description} />
                     <meta name="keywords" content="resume,development,developer" />
                     <meta property="og:type" content="website" />
-                    <meta property="og:locale" content="ko_KR" />
+                    <meta property="og:locale" content="en_CA" />
                     <meta property="og:title" content={TITLE} />
                     <meta property="og:description" content={data.description} />
                     <meta property="og:image" content={authorImage.default.src} />
