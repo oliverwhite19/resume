@@ -85,6 +85,7 @@ const MobileWrapper = styled('div', {
     zIndex: '$3',
     position: 'absolute',
     borderBottom: '3px solid $backgroundContrast',
+    display: 'none',
     variants: {
         visible: {
             true: {
@@ -98,6 +99,16 @@ const MobileWrapper = styled('div', {
     },
     '> div': {
         margin: 0,
+    },
+    '@media(max-width: 1000px)': {
+        display: 'block',
+    },
+});
+const Wrapper = styled('div', {
+    '@media(max-width: 1000px)': {
+        '.bm-burger-button': {
+            display: 'none',
+        },
     },
 });
 
@@ -128,18 +139,19 @@ const Offcanvas = () => {
             <NavbarButton title="Linktree" url="/linktree" />
         </ButtonGroup>
     );
-    return isTabletOrMobile ? (
-        <MobileMenu>{buttons}</MobileMenu>
-    ) : (
-        <Menu
-            customBurgerIcon={<Category set="light" primaryColor={theme.theme.colors.primary.value} />}
-            styles={styles(theme)}
-            noOverlay={false}
-            disableOverlayClick={false}
-        >
-            {buttons}
-            <AuthButtons>{authButtons}</AuthButtons>
-        </Menu>
+    return (
+        <Wrapper>
+            <MobileMenu>{buttons}</MobileMenu>
+            <Menu
+                customBurgerIcon={<Category set="light" primaryColor={theme.theme.colors.primary.value} />}
+                styles={styles(theme)}
+                noOverlay={false}
+                disableOverlayClick={false}
+            >
+                {buttons}
+                <AuthButtons>{authButtons}</AuthButtons>
+            </Menu>
+        </Wrapper>
     );
 };
 
