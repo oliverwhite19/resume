@@ -29,6 +29,7 @@ export default class ResumeDocument extends Document {
                     <meta name="twitter:image" content={authorImage.default.src} />
                 </Head>
                 <body>
+                    <script src="noflash.js" />
                     <Main />
                     <NextScript />
                 </body>

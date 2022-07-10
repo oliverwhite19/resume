@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { ThemeProvider } from 'next-themes';
 import { NextUIProvider } from '@nextui-org/react';
 import { KBarProvider } from 'kbar';
 import generateKbarAction from '../constants/KbarActions';
@@ -18,7 +18,7 @@ const KbarComponent = dynamic(() => import('../components/Kbar'), {
 
 export default function ResumeApp({ Component, pageProps }: AppProps) {
     return (
-        <NextThemesProvider
+        <ThemeProvider
             defaultTheme="system"
             attribute="class"
             value={{ light: lightTheme.className, dark: darkTheme.className }}
@@ -37,7 +37,7 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
                     </KBarProvider>
                 </NextUIProvider>
             </UserProvider>
-        </NextThemesProvider>
+        </ThemeProvider>
     );
 }
 
