@@ -4,8 +4,8 @@
 (function () {
     // Change these if you use something different in your hook.
     var storageKey = 'darkMode';
-    var classNameDark = 'dark-mode';
-    var classNameLight = 'light-mode';
+    var classNameDark = 'dark-theme';
+    var classNameLight = 'light-theme';
 
     function setClassOnDocumentBody(darkMode) {
         document.body.classList.add(darkMode ? classNameDark : classNameLight);
