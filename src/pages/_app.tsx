@@ -2,7 +2,6 @@ import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
-import { NextUIProvider } from '@nextui-org/react';
 import { KBarProvider } from 'kbar';
 import generateKbarAction from '../constants/KbarActions';
 import { authorName } from '../constants/General';
@@ -24,18 +23,15 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
             value={{ light: lightTheme.className, dark: darkTheme.className }}
         >
             <UserProvider>
-                <NextUIProvider>
-                    <KBarProvider actions={generateKbarAction()}>
-                        <Title />
-                        <KbarComponent />
-                        <Offcanvas />
-                        <Layout>
-                            <Component {...pageProps} />
-                            <Footer />
-                            <script> </script>
-                        </Layout>
-                    </KBarProvider>
-                </NextUIProvider>
+                <KBarProvider actions={generateKbarAction()}>
+                    <Title />
+                    <KbarComponent />
+                    <Offcanvas />
+                    <Layout>
+                        <Component {...pageProps} />
+                        <Footer />
+                    </Layout>
+                </KBarProvider>
             </UserProvider>
         </ThemeProvider>
     );

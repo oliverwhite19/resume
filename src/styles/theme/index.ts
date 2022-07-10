@@ -16,7 +16,6 @@ const theme = {
         },
     },
 };
-
 export const lightTheme: any = createTheme({
     type: 'light',
     ...theme,

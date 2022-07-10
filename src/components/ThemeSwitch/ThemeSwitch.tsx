@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { useTheme as useNextTheme } from 'next-themes';
-import { Switch, useTheme } from '@nextui-org/react';
+import { useTheme as useNextTheme, useTheme } from 'next-themes';
+import { Switch } from '@nextui-org/react';
 import { Icon } from '../Icon';
 
 const ARIA_LABEL = 'theme switch';
 
 export function ThemeSwitch() {
     const { setTheme } = useNextTheme();
-    const { theme, isDark } = useTheme();
+    const { theme } = useTheme();
 
     useEffect(() => {
         const label = document.querySelector(`[aria-label="${ARIA_LABEL}"]`);
@@ -27,10 +27,10 @@ export function ThemeSwitch() {
             }}
             squared
             size="lg"
-            checked={isDark}
+            checked={theme === 'dark'}
             onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
-            iconOn={<Icon name="Moon" fill={theme?.colors.black.value} />}
-            iconOff={<Icon name="Sun" fill={theme?.colors.black.value} />}
+            iconOn={<Icon name="Moon" fill={'black'} />}
+            iconOff={<Icon name="Sun" fill={'black'} />}
         />
     );
 }

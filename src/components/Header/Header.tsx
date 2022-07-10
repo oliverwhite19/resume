@@ -5,6 +5,7 @@ import { useKBar } from 'kbar';
 import { ThemeSwitch } from '../ThemeSwitch';
 import { useMediaQuery } from '../../hooks';
 import { authorImage, authorName } from '../../constants/General';
+import { primary } from '../../constants/Colors';
 
 const ButtonWrapper = styled('div', {
     display: 'flex',
@@ -56,7 +57,7 @@ function Header({ heading, description, hasResumeButtons }: IHeader) {
             <HeadingWrapper>
                 <H1
                     css={{
-                        textGradient: `45deg, ${theme.colors.text.value} 10%, ${theme.colors.primary.value} 60%`,
+                        textGradient: `45deg, ${theme.colors.text.value} 10%, ${primary} 60%`,
                     }}
                 >
                     {heading}
