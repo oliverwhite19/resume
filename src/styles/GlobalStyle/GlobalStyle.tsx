@@ -24,11 +24,5 @@ export const globalStyle = globalCss({
         html: {
             fontSize: '14px',
         },
-        '.bm-menu-wrap': {
-            width: '100% !important',
-        },
-        '.bm-burger-button': {
-            top: '2rem !important',
-        },
     },
 });

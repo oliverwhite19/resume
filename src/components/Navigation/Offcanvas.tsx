@@ -3,7 +3,6 @@ import { Button, styled, useTheme } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Menu from 'react-burger-menu/lib/menus/slide';
 import { Category } from 'react-iconly';
-import { useMediaQuery } from '../../hooks';
 import { useScroll } from '../../hooks/useScroll';
 
 // None of this can use stitches unfortunately
@@ -122,7 +121,6 @@ const Offcanvas = () => {
     const theme = useTheme();
     const router = useRouter();
     const { user } = useUser();
-    const isTabletOrMobile = useMediaQuery(1000);
     const authButtons = user ? (
         <Button as="a" shadow color="warning" bordered href={`/api/auth/logout?returnTo=${router.pathname}`}>
             Logout
@@ -132,8 +130,8 @@ const Offcanvas = () => {
             Login
         </Button>
     );
-    const buttons = (
-        <ButtonGroup vertical={!isTabletOrMobile}>
+    const buttons = (isPC) => (
+        <ButtonGroup vertical={isPC}>
             <NavbarButton title="Resume" url="/" />
             <NavbarButton title="Exchange" url="/exchange" />
             <NavbarButton title="Linktree" url="/linktree" />
@@ -141,14 +139,14 @@ const Offcanvas = () => {
     );
     return (
         <Wrapper>
-            <MobileMenu>{buttons}</MobileMenu>
+            <MobileMenu>{buttons(false)}</MobileMenu>
             <Menu
                 customBurgerIcon={<Category set="light" primaryColor={theme.theme.colors.primary.value} />}
                 styles={styles(theme)}
                 noOverlay={false}
                 disableOverlayClick={false}
             >
-                {buttons}
+                {buttons(true)}
                 <AuthButtons>{authButtons}</AuthButtons>
             </Menu>
         </Wrapper>
