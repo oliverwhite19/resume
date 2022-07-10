@@ -10,6 +10,7 @@ import Offcanvas from '../components/Navigation/Offcanvas';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import { Layout } from '../components/Layout';
 import { Footer } from '../components/Footer';
+import { NextUIProvider } from '@nextui-org/react';
 
 const KbarComponent = dynamic(() => import('../components/Kbar'), {
     ssr: false,
@@ -22,17 +23,19 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
             attribute="class"
             value={{ light: lightTheme.className, dark: darkTheme.className }}
         >
-            <UserProvider>
-                <KBarProvider actions={generateKbarAction()}>
-                    <Title />
-                    <KbarComponent />
-                    <Offcanvas />
-                    <Layout>
-                        <Component {...pageProps} />
-                        <Footer />
-                    </Layout>
-                </KBarProvider>
-            </UserProvider>
+            <NextUIProvider>
+                <UserProvider>
+                    <KBarProvider actions={generateKbarAction()}>
+                        <Title />
+                        <KbarComponent />
+                        <Offcanvas />
+                        <Layout>
+                            <Component {...pageProps} />
+                            <Footer />
+                        </Layout>
+                    </KBarProvider>
+                </UserProvider>
+            </NextUIProvider>
         </ThemeProvider>
     );
 }
