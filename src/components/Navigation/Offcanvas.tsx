@@ -3,6 +3,8 @@ import { Button, styled, useTheme } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import Menu from 'react-burger-menu/lib/menus/slide';
 import { Category } from 'react-iconly';
+import { useMediaQuery } from '../../hooks';
+import { useScroll } from '../../hooks/useScroll';
 
 // None of this can use stitches unfortunately
 const styles = (theme) => ({
@@ -14,7 +16,7 @@ const styles = (theme) => ({
         top: '36px',
     },
     bmBurgerBars: {
-        background: theme.theme.colors.primary,
+        background: theme.theme.colors.primary.value,
     },
     bmBurgerBarsHover: {
         background: '#a90000',
@@ -33,7 +35,7 @@ const styles = (theme) => ({
         left: 0,
     },
     bmMenu: {
-        background: theme.theme.colors.backgroundContrast,
+        background: theme.theme.colors.backgroundContrast.value,
         padding: '2.5em 1.5em 0',
         fontSize: '1.15em',
     },
@@ -71,47 +73,72 @@ const AuthButtons = styled('div', {
 const NavbarButton = ({ title, url }: { title: string; url: string }) => {
     const router = useRouter();
     return (
-        <Button as="a" href={url} bordered={router.pathname !== url}>
+        <Button as="a" href={url} bordered={router.pathname !== url} color="primary">
             {title}
         </Button>
     );
+};
+const MobileWrapper = styled('div', {
+    width: '100%',
+    transition: 'top 0.3s',
+    background: '$backgroundContrast',
+    zIndex: '$3',
+    position: 'absolute',
+    borderBottom: '3px solid $backgroundContrast',
+    variants: {
+        visible: {
+            true: {
+                top: 0,
+                position: 'fixed',
+            },
+            false: {
+                top: '-60px',
+            },
+        },
+    },
+    '> div': {
+        margin: 0,
+    },
+});
+
+const MobileMenu = ({ children }) => {
+    const { scrollDirection } = useScroll();
+
+    return <MobileWrapper visible={scrollDirection !== 'up'}>{children}</MobileWrapper>;
 };
 
 const Offcanvas = () => {
     const theme = useTheme();
     const router = useRouter();
     const { user } = useUser();
-    return (
+    const isTabletOrMobile = useMediaQuery(1000);
+    const authButtons = user ? (
+        <Button as="a" shadow color="warning" bordered href={`/api/auth/logout?returnTo=${router.pathname}`}>
+            Logout
+        </Button>
+    ) : (
+        <Button as="a" shadow color="success" href={`/api/auth/login?returnTo=${router.pathname}`}>
+            Login
+        </Button>
+    );
+    const buttons = (
+        <ButtonGroup vertical={!isTabletOrMobile}>
+            <NavbarButton title="Resume" url="/" />
+            <NavbarButton title="Exchange" url="/exchange" />
+            <NavbarButton title="Linktree" url="/linktree" />
+        </ButtonGroup>
+    );
+    return isTabletOrMobile ? (
+        <MobileMenu>{buttons}</MobileMenu>
+    ) : (
         <Menu
             customBurgerIcon={<Category set="light" primaryColor={theme.theme.colors.primary.value} />}
             styles={styles(theme)}
             noOverlay={false}
             disableOverlayClick={false}
         >
-            <ButtonGroup vertical color="primary">
-                <NavbarButton title="Resume" url="/" />
-                <NavbarButton title="Exchange" url="/exchange" />
-                <NavbarButton title="Linktree" url="/linktree" />
-                <NavbarButton title="Messages" url="/messages" />
-            </ButtonGroup>
-
-            <AuthButtons>
-                {user ? (
-                    <Button
-                        as="a"
-                        shadow
-                        color="warning"
-                        bordered
-                        href={`/api/auth/logout?returnTo=${router.pathname}`}
-                    >
-                        Logout
-                    </Button>
-                ) : (
-                    <Button as="a" shadow color="success" href={`/api/auth/login?returnTo=${router.pathname}`}>
-                        Login
-                    </Button>
-                )}
-            </AuthButtons>
+            {buttons}
+            <AuthButtons>{authButtons}</AuthButtons>
         </Menu>
     );
 };

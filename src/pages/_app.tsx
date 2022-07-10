@@ -28,11 +28,11 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
                     <KBarProvider actions={generateKbarAction()}>
                         <Title />
                         <KbarComponent />
+                        <Offcanvas />
                         <Layout>
                             <Component {...pageProps} />
                             <Footer />
                         </Layout>
-                        <Offcanvas />
                     </KBarProvider>
                 </NextUIProvider>
             </UserProvider>
