@@ -32,6 +32,7 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
                         <Layout>
                             <Component {...pageProps} />
                             <Footer />
+                            <script> </script>
                         </Layout>
                     </KBarProvider>
                 </NextUIProvider>
