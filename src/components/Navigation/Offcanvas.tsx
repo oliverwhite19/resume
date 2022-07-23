@@ -12,7 +12,7 @@ const styles = (theme) => ({
         width: '36px',
         height: '30px',
         left: '18px',
-        top: '36px',
+        top: '2.5rem',
     },
     bmBurgerBars: {
         background: theme.theme.colors.primary.value,

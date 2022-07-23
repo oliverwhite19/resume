@@ -15,6 +15,7 @@ model Employment {
   companyLink    String?
   descriptor     String?
   positions      Position[]
+  index Int?
 }
 
 model Position {
@@ -26,6 +27,7 @@ model Position {
   end          DateTime?
   details      String[]
   technologies String[]
+  index        Int?
 }
 
 model Education {
