@@ -28,7 +28,10 @@ export default Resume;
 
 export async function getStaticProps() {
     const prisma = new PrismaClient();
-    const employmentData = await prisma.employment.findMany({ include: { positions: true } });
+    const employmentData = await prisma.employment.findMany({
+        include: { positions: true },
+        orderBy: { index: 'asc' },
+    });
     const educationData = await prisma.education.findMany();
     return {
         props: {
